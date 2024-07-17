@@ -37,6 +37,7 @@ body {
 	-ms-overflow-style: none; /* for Internet Explorer, Edge */
 	scrollbar-width: none; /* for Firefox */
 	overflow-y: scroll;
+	background-color: #f5fffe;
 }
 
 body::-webkit-scrollbar {
@@ -78,7 +79,7 @@ body::-webkit-scrollbar {
 						justify-content: space-between;
 						div {
 							position: relative;
-							color: #eeeeeeed;
+							color: #003531;
 							font-family: $font;
 							font-size: 15px;
 							font-style: normal;
@@ -120,10 +121,10 @@ body::-webkit-scrollbar {
 							align-items: center;
 							justify-content: center;
 							border-radius: 60px;
-							border: 1px solid #ffffff;
+							border: 1px solid #003531;
 							cursor: pointer;
 							svg {
-								color: #ffffff;
+								color: #003531;
 								margin-right: 10px;
 							}
 							span {
@@ -132,7 +133,7 @@ body::-webkit-scrollbar {
 								font-style: normal;
 								font-weight: 600;
 								line-height: normal;
-								color: #ffffff;
+								color: #003531;
 							}
 						}
 						.login-user {
@@ -174,19 +175,48 @@ body::-webkit-scrollbar {
 	.header-main {
 		position: relative;
 		width: 100%;
-		height: 860px;
-		background-image: url('/img/banner/header1.svg');
+		height: 660px;
+		background-image: url('/img/banner/header1.jpg');
 		background-size: cover;
-		.container {
+		.fiber-wrap {
 			position: relative;
+			width: 1300px;
+			height: auto;
+			margin: 0 auto;
+			.fiberContainer {
+				position: absolute;
+				width: 250px;
+				height: 500px;
+				top: 100px;
+				right: 50px;
+				.box-img {
+					width: 250px;
+					height: 160px;
+					background-size: cover;
+					margin-top: 10px;
+					border: 4px solid white;
+					border-radius: 15px;
+					&:hover {
+						border: 4px solid yellow;
+						transition-delay: 0.5ms;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+		.container {
+			// position: relative;
 			margin-top: 20px;
 			flex-direction: column;
 			align-items: center;
+			position: absolute;
+			bottom: 50px;
+			left: 50px;
 			.search-box {
 				position: relative;
-				margin-top: 56px;
 				padding: 16px 29px;
-				width: 1094px;
+				// width: 1094px;
+				width: 990px;
 				height: 96px;
 				display: flex;
 				flex-direction: row;
@@ -223,8 +253,6 @@ body::-webkit-scrollbar {
 							font-weight: 400;
 							line-height: 26px;
 						}
-						svg {
-						}
 					}
 				}
 				.search-box-other {
@@ -259,7 +287,7 @@ body::-webkit-scrollbar {
 						align-items: center;
 						justify-content: center;
 						border-radius: 55px;
-						background: #f17742;
+						background: #003531;
 						cursor: pointer;
 						svg {
 							width: 20px;
@@ -659,9 +687,23 @@ body::-webkit-scrollbar {
 		padding: 60px 0px 18px 0px;
 		width: 100%;
 		height: auto;
-		display: flex;
-		flex-direction: row;
-		background: #181a20;
+		// display: flex;
+		// flex-direction: row;
+		background: #003531;
+		.sea-frame {
+			position: relative;
+			width: auto;
+			height: 678px;
+			background: #003531;
+			margin-top: -20px;
+			margin-bottom: 50px;
+			.rectangle {
+				width: 100%;
+				height: 150px;
+				position: absolute;
+				top: -40px;
+			}
+		}
 		.footer-container {
 			width: 1300px;
 			height: auto;
@@ -679,8 +721,8 @@ body::-webkit-scrollbar {
 						display: flex;
 						flex-direction: column;
 						.logo {
-							width: 128px;
-							height: 52px;
+							width: 200px;
+							height: 62px;
 							cursor: pointer;
 						}
 						span {
@@ -736,7 +778,7 @@ body::-webkit-scrollbar {
 							align-items: center;
 							box-sizing: border-box;
 							border-radius: 12px;
-							background: #212329;
+							background: #e6ece7;
 							input {
 								margin-right: 10px;
 								width: 85%;
@@ -751,7 +793,7 @@ body::-webkit-scrollbar {
 								background: none;
 							}
 							span {
-								color: #fff;
+								color: #000000;
 								font-family: $font;
 								font-size: 15px;
 								font-style: normal;

@@ -12,7 +12,7 @@
 				display: flex;
 				flex-direction: column;
 				span {
-					color: #181a20;
+					color: #003531;
 					font-family: $font;
 					font-size: 34px;
 					font-style: normal;
@@ -25,7 +25,7 @@
 					}
 				}
 				p {
-					color: #181a20;
+					color: #003531;
 					font-family: $font;
 					font-size: 14px;
 					font-style: normal;
@@ -45,7 +45,7 @@
 					flex-direction: row;
 					align-items: center;
 					.swiper-pagination-bullet.swiper-pagination-bullet-active {
-						background: #000000;
+						background: #003531;
 					}
 					.swiper-trend-next {
 						margin-left: 20px;
@@ -70,7 +70,7 @@
 					cursor: pointer;
 					align-items: center;
 					span {
-						color: #181a20;
+						color: #fff;
 						font-family: $font;
 						font-size: 15px;
 						font-style: normal;
@@ -114,6 +114,77 @@
 				}
 			}
 		}
+		.advertisement-frame {
+			width: 1300px;
+			height: 678px;
+			margin: 0 auto;
+			transform: perspective(0px);
+			margin-top: 80px;
+			.big-city {
+				position: relative;
+				&:hover {
+					opacity: 1;
+					transform: scale(1.05);
+					cursor: pointer;
+				}
+				p {
+					position: absolute;
+					top: 60px;
+					right: 0;
+					font-size: 16px;
+					background-color: #f5fffe;
+					color: #003531;
+					padding: 5px 14px;
+					border-radius: 20px 0 0 20px;
+				}
+				img {
+					width: 330px;
+					height: 400px;
+					margin-top: 40px;
+					border-radius: 40px;
+				}
+				span {
+					position: absolute;
+					bottom: 40px;
+					left: 0;
+					font-size: 24px;
+					background-color: #f5fffe;
+					color: #003531;
+					padding: 5px 20px;
+					border-radius: 0 20px 20px 0px;
+				}
+			}
+			video {
+				width: 47%;
+				height: 450px;
+				object-fit: cover;
+				border-radius: 50px;
+			}
+			.small-city {
+				position: relative;
+				&:hover {
+					opacity: 1;
+					transform: scale(1.05);
+					cursor: pointer;
+				}
+				img {
+					width: 250px;
+					height: 180px;
+					margin-top: 30px;
+					border-radius: 30px;
+				}
+				span {
+					position: absolute;
+					bottom: 16px;
+					left: 0;
+					font-size: 18px;
+					background-color: #f5fffe;
+					color: #003531;
+					padding: 5px 14px;
+					border-radius: 0 20px 20px 0px;
+				}
+			}
+		}
 		.trend-properties {
 			padding: 108px 0px 76px;
 			width: 100%;
@@ -124,7 +195,7 @@
 				flex-direction: column;
 				.card-box {
 					position: relative;
-					margin-top: 64px;
+					margin-top: 34px;
 					display: flex;
 					flex-direction: row;
 					.empty-list {
@@ -136,7 +207,7 @@
 					}
 					.trend-property-swiper {
 						width: 100%;
-						height: 400px;
+						height: 450px;
 						display: flex;
 						flex-direction: row;
 						.trend-property-slide {
@@ -149,7 +220,7 @@
 					.trend-card-box {
 						position: relative;
 						width: 300px;
-						height: 375px;
+						height: 425px;
 						display: flex;
 						flex-direction: column;
 						transition: transform 0.3s;
@@ -160,7 +231,7 @@
 						.card-img {
 							position: relative;
 							width: 100%;
-							height: 203px;
+							height: 233px;
 							background-size: cover;
 							border-radius: 12px 12px 0px 0px;
 							cursor: pointer;
@@ -168,10 +239,10 @@
 								position: absolute;
 								padding: 8px 12px;
 								left: 12px;
-								bottom: 12px;
-								border-radius: 6px;
-								background: #fff;
-								color: #181a20;
+								bottom: 18px;
+								border-radius: 20px;
+								background: #003531;
+								color: #fff;
 								font-family: $font;
 								font-size: 15px;
 								font-style: normal;
@@ -180,18 +251,30 @@
 							}
 						}
 						.info {
-							padding: 20px 22px 17px;
+							position: absolute;
+							bottom: 0;
+							width: 100%;
+							height: 200px;
+							padding: 20px 22px 7px;
 							display: flex;
 							flex-direction: column;
 							box-sizing: border-box;
-							border-radius: 0px 0px 12px 12px;
-							border: 1px solid rgba(196, 196, 196, 0.71);
+							border-radius: 12px;
 							border-top: none;
 							background: #fff;
 							box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
+							div {
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+								.view-cnt {
+									margin-left: 5px;
+									color: #003531;
+								}
+							}
 							.title {
 								overflow: hidden;
-								color: #181a20;
+								color: #003531;
 								text-overflow: ellipsis;
 								white-space: nowrap;
 								font-family: $font;
@@ -228,7 +311,7 @@
 										height: 17px;
 									}
 									span {
-										color: #181a20;
+										color: #003531;
 										font-family: $font;
 										font-size: 13px;
 										font-style: normal;
@@ -242,8 +325,13 @@
 								flex-direction: row;
 								justify-content: space-between;
 								align-items: center;
+								img {
+									width: 40px;
+									height: 40px;
+									border-radius: 50%;
+								}
 								p {
-									color: #181a20;
+									color: #003531;
 									font-family: $font;
 									font-size: 13px;
 									font-style: normal;
@@ -251,25 +339,26 @@
 									line-height: normal;
 									text-transform: capitalize;
 								}
-								button {
-									margin-left: 7px;
-									width: 16px;
-									height: 16px;
-									box-sizing: border-box;
-								}
-								.view-like-box {
+								// button {
+								// 	margin-left: 7px;
+								// 	width: 16px;
+								// 	height: 16px;
+								// 	box-sizing: border-box;
+								// }
+								.book-box {
 									display: flex;
 									flex-direction: row;
-									gap: 7px;
 									align-items: center;
-									.view-cnt {
-										color: #717171;
-										font-family: $font;
-										font-size: 13px;
-										font-style: normal;
-										font-weight: 400;
-										line-height: normal;
-										text-overflow: ellipsis;
+									.book-btn {
+										padding: 8px 15px;
+										border-radius: 20px;
+										background: #003531;
+										color: #fff;
+										&:hover {
+											background: #fff;
+											color: #003531;
+											border: 2px solid #003531;
+										}
 									}
 								}
 							}
@@ -279,12 +368,13 @@
 			}
 		}
 		.popular-properties {
-			padding: 132px 0px 94px;
+			padding: 100px 0px 94px;
 			width: 100%;
-			height: 816px;
+			height: 650px;
 			display: flex;
 			flex-direction: row;
-			background: #f6f6f6;
+			background: url('../../../public/img/banner/popPropertyBg.png');
+			background-size: cover;
 			.container {
 				flex-direction: column;
 				align-items: center;
@@ -297,7 +387,7 @@
 					justify-content: space-between;
 					.popular-property-swiper {
 						width: 100%;
-						height: 425px;
+						height: 350px;
 						display: flex;
 						flex-direction: row;
 						.popular-property-slide {
@@ -309,38 +399,51 @@
 					}
 					.popular-card-box {
 						position: relative;
-						width: 400px;
-						height: 425px;
+						width: 610px;
+						height: 300px;
 						display: flex;
-						flex-direction: column;
+						flex-direction: row;
 						transition: transform 0.3s, opacity 0.3s;
-						&:hover {
-							opacity: 1;
-							transform: scale(1.05);
-						}
 						.card-img {
 							position: relative;
-							width: 100%;
-							height: 203px;
+							width: 50%;
+							height: 300px;
 							background-size: cover;
-							border-radius: 12px 12px 0px 0px;
+							border-radius: 20px 0 0 20px;
 							cursor: pointer;
-							div.status {
+						}
+
+						.info {
+							position: absolute;
+							right: 0;
+							width: 370px;
+							height: 300px;
+							padding: 40px 30px 17px;
+							display: flex;
+							flex-direction: column;
+							box-sizing: border-box;
+							border-radius: 20px;
+							border: 1px solid rgba(196, 196, 196, 0.71);
+							border-top: none;
+							background: #fff;
+							box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
+							margin-left: -20px;
+							.status {
 								position: absolute;
-								padding: 6px 34px;
-								left: 20px;
-								top: 20px;
+								padding: 6px 24px;
+								right: 0;
+								top: 10px;
 								display: flex;
 								align-items: center;
-								border-radius: 6px;
-								background: #eb6753;
+								border-radius: 50px 0 0 0;
+								background: #ffc700;
 								img {
 									width: 14px;
 									height: 14px;
 								}
 								span {
 									margin-left: 5px;
-									color: #fff;
+									color: #000;
 									font-family: $font;
 									font-size: 12px;
 									font-style: normal;
@@ -349,42 +452,18 @@
 									text-transform: uppercase;
 								}
 							}
-							div.price {
-								position: absolute;
-								padding: 8px 12px;
-								left: 20px;
-								bottom: 20px;
-								border-radius: 6px;
-								background: #fff;
-								color: #181a20;
-								font-family: $font;
-								font-size: 15px;
-								font-style: normal;
-								font-weight: 600;
-								line-height: normal;
-							}
-						}
-						.info {
-							padding: 20px 22px 17px;
-							display: flex;
-							flex-direction: column;
-							box-sizing: border-box;
-							border-radius: 0px 0px 12px 12px;
-							border: 1px solid rgba(196, 196, 196, 0.71);
-							border-top: none;
-							background: #fff;
-							box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
 							.title {
 								overflow: hidden;
-								color: #181a20;
+								color: #003531;
 								text-overflow: ellipsis;
 								white-space: nowrap;
 								font-family: $font;
-								font-size: 15px;
+								font-size: 24px;
 								font-style: normal;
 								font-weight: 600;
 								line-height: normal;
 								text-transform: capitalize;
+								margin-bottom: 10px;
 								cursor: pointer;
 							}
 							.desc {
@@ -392,7 +471,7 @@
 								overflow: hidden;
 								color: #717171;
 								font-family: $font;
-								font-size: 13px;
+								font-size: 14px;
 								font-style: normal;
 								font-weight: 400;
 								line-height: normal;
@@ -400,7 +479,7 @@
 								white-space: nowrap;
 							}
 							.options {
-								margin-top: 15px;
+								margin-top: 25px;
 								display: flex;
 								flex-direction: row;
 								justify-content: space-between;
@@ -413,7 +492,7 @@
 										height: 17px;
 									}
 									span {
-										color: #181a20;
+										color: #003531;
 										font-family: $font;
 										font-size: 13px;
 										font-style: normal;
@@ -428,9 +507,9 @@
 								justify-content: space-between;
 								align-items: center;
 								p {
-									color: #181a20;
+									color: #003531;
 									font-family: $font;
-									font-size: 13px;
+									font-size: 15px;
 									font-style: normal;
 									font-weight: 500;
 									line-height: normal;
@@ -448,13 +527,46 @@
 									gap: 7px;
 									align-items: center;
 									.view-cnt {
-										color: #717171;
+										color: #003531;
 										font-family: $font;
-										font-size: 13px;
+										font-size: 15px;
+										font-style: normal;
+										font-weight: 500;
+										line-height: normal;
+										text-overflow: ellipsis;
+									}
+								}
+							}
+							.price-wrap {
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+								margin-top: 25px;
+								.price {
+									font-family: $font;
+									font-size: 20px;
+									font-style: normal;
+									font-weight: 600;
+									line-height: normal;
+									color: #003531;
+									span {
+										font-family: $font;
+										font-size: 15px;
 										font-style: normal;
 										font-weight: 400;
 										line-height: normal;
-										text-overflow: ellipsis;
+										color: #717171;
+									}
+								}
+								.book-btn {
+									padding: 5px 15px;
+									border: 2px solid #003531;
+									border-radius: 20px;
+									color: #003531;
+									&:hover {
+										background: #003531;
+										color: #fff;
+										cursor: pointer;
 									}
 								}
 							}
@@ -467,7 +579,7 @@
 					justify-content: center;
 					align-items: center;
 					.swiper-pagination-bullet.swiper-pagination-bullet-active {
-						background: #000000;
+						background: #003531;
 					}
 					.swiper-popular-next {
 						margin-left: 20px;
@@ -480,12 +592,14 @@
 				}
 			}
 		}
-		.video-frame {
+		.choose {
 			width: 100%;
-			height: 678px;
-			background: black;
-			transform: perspective(0px);
-			box-shadow: -3px 0px 20px 14px #34343480;
+			height: 600px;
+			background: #f7f7f7;
+			.container {
+				width: 1300px;
+				height: 0 auto;
+			}
 		}
 		.top-properties {
 			padding: 108px 0px 76px;

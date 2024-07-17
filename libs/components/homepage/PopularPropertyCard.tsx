@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Box, Divider, Typography } from '@mui/material';
+import { Stack, Box, Divider, Typography, Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { Property } from '../../types/property/property';
@@ -8,6 +8,8 @@ import { REACT_APP_API_URL, topPropertyRank } from '../../config';
 import { useRouter } from 'next/router';
 import { useReactiveVar } from '@apollo/client';
 import { userVar } from '../../../apollo/store';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 interface PopularPropertyCardProps {
 	property: Property;
@@ -46,9 +48,7 @@ const PopularPropertyCard = (props: PopularPropertyCardProps) => {
 					<div className={'price'}>${property.propertyPrice}</div>
 				</Box>
 				<Box component={'div'} className={'info'}>
-					<strong className={'title'} onClick={() => pushDetailHandler(property._id)}>
-						{property.propertyTitle}
-					</strong>
+					<strong className={'title'}>{property.propertyTitle}</strong>
 					<p className={'desc'}>{property.propertyAddress}</p>
 					<div className={'options'}>
 						<div>
@@ -84,24 +84,22 @@ const PopularPropertyCard = (props: PopularPropertyCardProps) => {
 					component={'div'}
 					className={'card-img'}
 					style={{ backgroundImage: `url(${REACT_APP_API_URL}/${property?.propertyImages[0]})` }}
-					onClick={() => pushDetailHandler(property._id)}
-				>
+				></Box>
+				<Box component={'div'} className={'info'}>
 					{property && property?.propertyRank >= topPropertyRank ? (
 						<div className={'status'}>
-							<img src="/img/icons/electricity.svg" alt="" />
+							<img src="/img/icons/electricity.webp" alt="" />
 							<span>top</span>
 						</div>
 					) : (
 						''
 					)}
+					<strong className={'title'}>{property.propertyTitle}</strong>
+					<div style={{ display: 'flex' }}>
+						<LocationOnIcon />
+						<p className={'desc'}>{property.propertyAddress}</p>
+					</div>
 
-					<div className={'price'}>${property.propertyPrice}</div>
-				</Box>
-				<Box component={'div'} className={'info'}>
-					<strong className={'title'} onClick={() => pushDetailHandler(property._id)}>
-						{property.propertyTitle}
-					</strong>
-					<p className={'desc'}>{property.propertyAddress}</p>
 					<div className={'options'}>
 						<div>
 							<img src="/img/icons/bed.svg" alt="" />
@@ -117,6 +115,7 @@ const PopularPropertyCard = (props: PopularPropertyCardProps) => {
 						</div>
 					</div>
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
+
 					<div className={'bott'}>
 						<p>{property?.propertyRent ? 'rent' : 'sale'}</p>
 						<div className="view-like-box">
@@ -125,6 +124,14 @@ const PopularPropertyCard = (props: PopularPropertyCardProps) => {
 							</IconButton>
 							<Typography className="view-cnt">{property?.propertyViews}</Typography>
 						</div>
+					</div>
+					<div className={'price-wrap'}>
+						<div className={'price'}>
+							${property.propertyPrice} <span>/ night</span>
+						</div>
+						<Button className={'book-btn'} onClick={() => pushDetailHandler(property._id)}>
+							Book now
+						</Button>
 					</div>
 				</Box>
 			</Stack>

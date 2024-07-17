@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Box, Divider, Typography } from '@mui/material';
+import { Stack, Box, Divider, Typography, Link, Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -20,6 +20,9 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 	const device = useDeviceDetect();
 	const router = useRouter();
 	const user = useReactiveVar(userVar);
+	const agentImage = property?.memberData?.memberImage
+		? `${process.env.REACT_APP_API_URL}/${property?.memberData?.memberImage}`
+		: '/img/profile/defaultUser.svg';
 
 	/** HANDLERS **/
 	const pushDetailHandler = async (propertyId: string) => {
@@ -88,14 +91,23 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 					component={'div'}
 					className={'card-img'}
 					style={{ backgroundImage: `url(${REACT_APP_API_URL}/${property?.propertyImages[0]})` }}
-					onClick={() => pushDetailHandler(property._id)}
 				>
 					<div>${property.propertyPrice}</div>
 				</Box>
 				<Box component={'div'} className={'info'}>
-					<strong className={'title'} onClick={() => pushDetailHandler(property._id)}>
-						{property.propertyTitle}
-					</strong>
+					<div>
+						<strong className={'title'}>{property.propertyTitle}</strong>
+
+						<IconButton color={'default'} onClick={() => likePropertyHandler(user, property?._id)}>
+							{property?.meLiked && property?.meLiked[0]?.myFavorite ? (
+								<FavoriteIcon style={{ color: 'red' }} />
+							) : (
+								<FavoriteIcon />
+							)}
+							<Typography className={'view-cnt'}>{property?.propertyLikes}</Typography>
+						</IconButton>
+					</div>
+
 					<p className={'desc'}>{property.propertyDesc ?? 'no description'}</p>
 					<div className={'options'}>
 						<div>
@@ -111,25 +123,18 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 							<span>{property.propertySquare} m2</span>
 						</div>
 					</div>
-					<Divider sx={{ mt: '15px', mb: '17px' }} />
+					<Divider sx={{ mt: '15px', mb: '7px' }} />
 					<div className={'bott'}>
-						<p>
+						{/* <p>
 							{property.propertyRent ? 'Rent' : ''} {property.propertyRent && property.propertyBarter && '/'}{' '}
 							{property.propertyBarter ? 'Barter' : ''}
-						</p>
-						<div className="view-like-box">
-							<IconButton color={'default'}>
-								<RemoveRedEyeIcon />
-							</IconButton>
-							<Typography className="view-cnt">{property?.propertyViews}</Typography>
-							<IconButton color={'default'} onClick={() => likePropertyHandler(user, property?._id)}>
-								{property?.meLiked && property?.meLiked[0]?.myFavorite ? (
-									<FavoriteIcon style={{ color: 'red' }} />
-								) : (
-									<FavoriteIcon />
-								)}
-							</IconButton>
-							<Typography className="view-cnt">{property?.propertyLikes}</Typography>
+						</p> */}
+						<img src={agentImage} alt="" />
+						<p>{property.memberData?.memberNick}</p>
+						<div className="book-box">
+							<Button className="book-btn" onClick={() => pushDetailHandler(property._id)}>
+								Book now
+							</Button>
 						</div>
 					</div>
 				</Box>
