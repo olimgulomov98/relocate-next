@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Box, Divider, Typography } from '@mui/material';
+import { Stack, Box, Divider, Typography, Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -20,6 +20,9 @@ const TopPropertyCard = (props: TopPropertyCardProps) => {
 	const device = useDeviceDetect();
 	const router = useRouter();
 	const user = useReactiveVar(userVar);
+	const agentImage = property?.memberData?.memberImage
+		? `${process.env.REACT_APP_API_URL}/${property?.memberData?.memberImage}`
+		: '/img/profile/defaultUser.svg';
 
 	/** HANDLERS **/
 	const pushDetailHandler = async (propertyId: string) => {
@@ -89,14 +92,9 @@ const TopPropertyCard = (props: TopPropertyCardProps) => {
 					component={'div'}
 					className={'card-img'}
 					style={{ backgroundImage: `url(${REACT_APP_API_URL}/${property?.propertyImages[0]})` }}
-					onClick={() => pushDetailHandler(property._id)}
-				>
-					<div>${property?.propertyPrice}</div>
-				</Box>
+				></Box>
 				<Box component={'div'} className={'info'}>
-					<strong className={'title'} onClick={() => pushDetailHandler(property._id)}>
-						{property?.propertyTitle}
-					</strong>
+					<strong className={'title'}>{property?.propertyTitle}</strong>
 					<p className={'desc'}>{property?.propertyAddress}</p>
 					<div className={'options'}>
 						<div>
@@ -112,13 +110,11 @@ const TopPropertyCard = (props: TopPropertyCardProps) => {
 							<span>{property?.propertySquare} m2</span>
 						</div>
 					</div>
-					<Divider sx={{ mt: '15px', mb: '17px' }} />
+					{/* <Divider sx={{ mt: '15px', mb: '17px' }} /> */}
 					<div className={'bott'}>
-						<p>
-							{' '}
-							{property.propertyRent ? 'Rent' : ''} {property.propertyRent && property.propertyBarter && '/'}{' '}
-							{property.propertyBarter ? 'Barter' : ''}
-						</p>
+						<div className={'price'}>
+							${property?.propertyPrice} <span>/ night</span>
+						</div>
 						<div className="view-like-box">
 							<IconButton color={'default'}>
 								<RemoveRedEyeIcon />
@@ -133,6 +129,20 @@ const TopPropertyCard = (props: TopPropertyCardProps) => {
 							</IconButton>
 							<Typography className="view-cnt">{property?.propertyLikes}</Typography>
 						</div>
+					</div>
+					<div className={'agent'}>
+						<div>
+							<img src={agentImage} alt="" />
+							<p>{property.memberData?.memberNick}</p>
+						</div>
+						<p className="rent">
+							{' '}
+							{property.propertyRent ? 'Rent' : ''} {property.propertyRent && property.propertyBarter && '/'}{' '}
+							{property.propertyBarter ? 'Barter' : ''}
+						</p>
+						<Button className="book-btn" onClick={() => pushDetailHandler(property._id)}>
+							Book now
+						</Button>
 					</div>
 				</Box>
 			</Stack>

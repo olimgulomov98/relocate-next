@@ -616,7 +616,7 @@ const Filter = (props: FilterType) => {
 								onChange={propertyTypeSelectHandler}
 								checked={(searchFilter?.search?.typeList || []).includes(type as PropertyType)}
 							/>
-							<label style={{ cursor: 'pointer' }}>
+							<label style={{ cursor: 'pointer', color: '#003531' }}>
 								<Typography className="property_type">{type}</Typography>
 							</label>
 						</Stack>
@@ -763,7 +763,7 @@ const Filter = (props: FilterType) => {
 							checked={(searchFilter?.search?.options || []).includes('propertyBarter')}
 							onChange={propertyOptionSelectHandler}
 						/>
-						<label htmlFor={'Barter'} style={{ cursor: 'pointer' }}>
+						<label htmlFor={'Barter'} style={{ cursor: 'pointer', color: '#003531' }}>
 							<Typography className="propert-type">Barter</Typography>
 						</label>
 					</Stack>
@@ -777,7 +777,7 @@ const Filter = (props: FilterType) => {
 							checked={(searchFilter?.search?.options || []).includes('propertyRent')}
 							onChange={propertyOptionSelectHandler}
 						/>
-						<label htmlFor={'Rent'} style={{ cursor: 'pointer' }}>
+						<label htmlFor={'Rent'} style={{ cursor: 'pointer', color: '#003531' }}>
 							<Typography className="propert-type">Rent</Typography>
 						</label>
 					</Stack>

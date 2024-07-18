@@ -55,16 +55,18 @@ const CommunityBoards = () => {
 			<Stack className={'community-board'}>
 				<Stack className={'container'}>
 					<Stack>
-						<Typography variant={'h1'}>COMMUNITY BOARD HIGHLIGHTS</Typography>
+						<Typography variant={'h1'} sx={{ color: '#003531' }}>
+							COMMUNITY BOARD HIGHLIGHTS
+						</Typography>
 					</Stack>
 					<Stack className="community-main">
 						<Stack className={'community-left'}>
-							<Stack className={'content-top'}>
+							{/* <Stack className={'content-top'}>
 								<Link href={'/community?articleCategory=NEWS'}>
 									<span>News</span>
 								</Link>
 								<img src="/img/icons/arrowBig.svg" alt="" />
-							</Stack>
+							</Stack> */}
 							<Stack className={'card-wrap'}>
 								{newsArticles.map((article, index) => {
 									return <CommunityCard vertical={true} article={article} index={index} key={article?._id} />;
@@ -72,12 +74,12 @@ const CommunityBoards = () => {
 							</Stack>
 						</Stack>
 						<Stack className={'community-right'}>
-							<Stack className={'content-top'}>
+							{/* <Stack className={'content-top'}>
 								<Link href={'/community?articleCategory=FREE'}>
 									<span>Free</span>
 								</Link>
 								<img src="/img/icons/arrowBig.svg" alt="" />
-							</Stack>
+							</Stack> */}
 							<Stack className={'card-wrap vertical'}>
 								{freeArticles.map((article, index) => {
 									return <CommunityCard vertical={false} article={article} index={index} key={article?._id} />;
