@@ -25,13 +25,19 @@ import { Pagination as MuiPagination } from '@mui/material';
 import Link from 'next/link';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import { GET_COMMENTS, GET_PROPERTIES, GET_PROPERTY } from '../../apollo/user/query';
 import { T } from '../../libs/types/common';
 import { Direction, Message } from '../../libs/enums/common.enum';
 import { CREATE_COMMENT, LIKE_TARGET_PROPERTY } from '../../apollo/user/mutation';
 import { sweetErrorHandling, sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
+import SmokeFreeIcon from '@mui/icons-material/SmokeFree';
+import LocalParkingIcon from '@mui/icons-material/LocalParking';
+import WifiIcon from '@mui/icons-material/Wifi';
+import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
+import DeckIcon from '@mui/icons-material/Deck';
+import FreeBreakfastIcon from '@mui/icons-material/FreeBreakfast';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -208,9 +214,26 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 				<div className={'container'}>
 					<Stack className={'property-detail-config'}>
 						<Stack className={'property-info-config'}>
+							<Stack className={'images'}>
+								<Stack className={'sub-images'}>
+									{property?.propertyImages.map((subImg: string) => {
+										const imagePath: string = `${REACT_APP_API_URL}/${subImg}`;
+										return (
+											<Stack className={'sub-img-box'} onClick={() => changeImageHandler(subImg)} key={subImg}>
+												<img src={imagePath} alt={'sub-image'} />
+											</Stack>
+										);
+									})}
+								</Stack>
+								<Stack className={'main-image'}>
+									<img
+										src={slideImage ? `${REACT_APP_API_URL}/${slideImage}` : '/img/property/bigImage.png'}
+										alt={'main-image'}
+									/>
+								</Stack>
+							</Stack>
 							<Stack className={'info'}>
 								<Stack className={'left-box'}>
-									<Typography className={'title-main'}>{property?.propertyTitle}</Typography>
 									<Stack className={'top-box'}>
 										<Typography className={'city'}>{property?.propertyLocation}</Typography>
 										<Stack className={'divider'}></Stack>
@@ -219,7 +242,7 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 												<>
 													<Stack className={'circle'}>
 														<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none">
-															<circle cx="3" cy="3" r="3" fill="#EB6753" />
+															<circle cx="3" cy="3" r="3" fill="#003751" />
 														</svg>
 													</Stack>
 													<Typography className={'buy-rent'}>Barter</Typography>
@@ -257,6 +280,8 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 										</svg>
 										<Typography className={'date'}>{moment().diff(property?.createdAt, 'days')} days ago</Typography>
 									</Stack>
+									<Typography className={'title-main'}>{property?.propertyTitle}</Typography>
+
 									<Stack className={'bottom-box'}>
 										<Stack className="option">
 											<img src="/img/icons/bed.svg" alt="" /> <Typography>{property?.propertyBeds} bed</Typography>
@@ -268,6 +293,9 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 											<img src="/img/icons/expand.svg" alt="" /> <Typography>{property?.propertySquare} m2</Typography>
 										</Stack>
 									</Stack>
+									<Typography className={'price'}>
+										${formatterStr(property?.propertyPrice)} <span>/ night</span>
+									</Typography>
 								</Stack>
 								<Stack className={'right-box'}>
 									<Stack className="buttons">
@@ -288,25 +316,6 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 											<Typography>{property?.propertyLikes}</Typography>
 										</Stack>
 									</Stack>
-									<Typography>${formatterStr(property?.propertyPrice)}</Typography>
-								</Stack>
-							</Stack>
-							<Stack className={'images'}>
-								<Stack className={'main-image'}>
-									<img
-										src={slideImage ? `${REACT_APP_API_URL}/${slideImage}` : '/img/property/bigImage.png'}
-										alt={'main-image'}
-									/>
-								</Stack>
-								<Stack className={'sub-images'}>
-									{property?.propertyImages.map((subImg: string) => {
-										const imagePath: string = `${REACT_APP_API_URL}/${subImg}`;
-										return (
-											<Stack className={'sub-img-box'} onClick={() => changeImageHandler(subImg)} key={subImg}>
-												<img src={imagePath} alt={'sub-image'} />
-											</Stack>
-										);
-									})}
 								</Stack>
 							</Stack>
 						</Stack>
@@ -443,17 +452,50 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 										</Stack>
 									</Stack>
 								</Stack>
-								<Stack className={'floor-plans-config'}>
-									<Typography className={'title'}>Floor Plans</Typography>
-									<Stack className={'image-box'}>
-										<img src={'/img/property/floorPlan.png'} alt={'image'} />
+								<Stack className={'facilities-config'}>
+									<Typography className={'title'}>Most Popular Facilities</Typography>
+									<Stack className={'facilities-wrap'}>
+										<Stack className={'facility'}>
+											<SmokeFreeIcon />
+											<Typography>Non-smoking rooms</Typography>
+										</Stack>
+										<Stack className={'facility'}>
+											<LocalParkingIcon />
+											<Typography>Private Parking</Typography>
+										</Stack>
+										<Stack className={'facility'}>
+											<WifiIcon />
+											<Typography>Free WiFi</Typography>
+										</Stack>
+										<Stack className={'facility'}>
+											<FamilyRestroomIcon />
+											<Typography>Family rooms</Typography>
+										</Stack>
+										<Stack className={'facility'}>
+											<DeckIcon />
+											<Typography>Terrace</Typography>
+										</Stack>
+										<Stack className={'facility'}>
+											<FreeBreakfastIcon />
+											<Typography>Very good breakfast</Typography>
+										</Stack>
+									</Stack>
+									<Stack className={'check-time-wrap'}>
+										<Stack className={'check-time'}>
+											<Typography className={'title'}>Check in time:</Typography>
+											<span>From 15:00 to 20:30</span>
+										</Stack>
+										<Stack className={'check-time'}>
+											<Typography className={'title'}>Check out time:</Typography>
+											<span>From 06:30 to 11:00</span>
+										</Stack>
 									</Stack>
 								</Stack>
 								<Stack className={'address-config'}>
 									<Typography className={'title'}>Address</Typography>
 									<Stack className={'map-box'}>
 										<iframe
-											src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25867.098915951767!2d128.68632810247993!3d35.86402299180927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35660bba427bf179%3A0x1fc02da732b9072f!2sGeumhogangbyeon-ro%2C%20Dong-gu%2C%20Daegu!5e0!3m2!1suz!2skr!4v1695537640704!5m2!1suz!2skr"
+											src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Dubai,%20united%20arab%20emirates+(Business%20Bay)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
 											width="100%"
 											height="100%"
 											style={{ border: 0 }}
@@ -463,6 +505,7 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 										></iframe>
 									</Stack>
 								</Stack>
+
 								{commentTotal !== 0 && (
 									<Stack className={'reviews-config'}>
 										<Stack className={'filter-box'}>
@@ -471,7 +514,7 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 													<g clipPath="url(#clip0_6507_7309)">
 														<path
 															d="M15.7183 4.60288C15.6171 4.3599 15.3413 4.18787 15.0162 4.16489L10.5822 3.8504L8.82988 0.64527C8.7005 0.409792 8.40612 0.257812 8.07846 0.257812C7.7508 0.257812 7.4563 0.409792 7.32774 0.64527L5.57541 3.8504L1.14072 4.16489C0.815641 4.18832 0.540363 4.36035 0.438643 4.60288C0.337508 4.84586 0.430908 5.11238 0.676772 5.28084L4.02851 7.57692L3.04025 10.9774C2.96794 11.2275 3.09216 11.486 3.35771 11.636C3.50045 11.717 3.66815 11.7575 3.83643 11.7575C3.98105 11.7575 4.12577 11.7274 4.25503 11.667L8.07846 9.88098L11.9012 11.667C12.1816 11.7979 12.5342 11.7859 12.7992 11.636C13.0648 11.486 13.189 11.2275 13.1167 10.9774L12.1284 7.57692L15.4801 5.28084C15.7259 5.11238 15.8194 4.84641 15.7183 4.60288Z"
-															fill="#181A20"
+															fill="#ffc700"
 														/>
 													</g>
 													<defs>
@@ -519,7 +562,7 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 												<g clipPath="url(#clip0_6975_3642)">
 													<path
 														d="M16.1571 0.5H6.37936C6.1337 0.5 5.93491 0.698792 5.93491 0.944458C5.93491 1.19012 6.1337 1.38892 6.37936 1.38892H15.0842L0.731781 15.7413C0.558156 15.915 0.558156 16.1962 0.731781 16.3698C0.818573 16.4566 0.932323 16.5 1.04603 16.5C1.15974 16.5 1.27345 16.4566 1.36028 16.3698L15.7127 2.01737V10.7222C15.7127 10.9679 15.9115 11.1667 16.1572 11.1667C16.4028 11.1667 16.6016 10.9679 16.6016 10.7222V0.944458C16.6016 0.698792 16.4028 0.5 16.1571 0.5Z"
-														fill="#181A20"
+														fill="#000000"
 													/>
 												</g>
 												<defs>
@@ -591,7 +634,7 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 											<g clipPath="url(#clip0_6975_593)">
 												<path
 													d="M16.0556 0.5H6.2778C6.03214 0.5 5.83334 0.698792 5.83334 0.944458C5.83334 1.19012 6.03214 1.38892 6.2778 1.38892H14.9827L0.630219 15.7413C0.456594 15.915 0.456594 16.1962 0.630219 16.3698C0.71701 16.4566 0.83076 16.5 0.944469 16.5C1.05818 16.5 1.17189 16.4566 1.25872 16.3698L15.6111 2.01737V10.7222C15.6111 10.9679 15.8099 11.1667 16.0556 11.1667C16.3013 11.1667 16.5001 10.9679 16.5001 10.7222V0.944458C16.5 0.698792 16.3012 0.5 16.0556 0.5Z"
-													fill="white"
+													fill="#181a20"
 												/>
 											</g>
 											<defs>

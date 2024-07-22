@@ -1,7 +1,7 @@
 #pc-wrap {
 	#property-detail-page {
 		position: relative;
-		background: #fff;
+		background: #f5fffe;
 		padding-top: 87px;
 		padding-bottom: 200px;
 		.property-detail-config {
@@ -12,24 +12,63 @@
 			.property-info-config {
 				width: 100%;
 				height: auto;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
 				gap: 30px;
-				.info {
+				.images {
 					width: 100%;
+					height: auto;
+					display: flex;
+					flex-direction: row;
+					gap: 10px;
+					.main-image {
+						width: 100%;
+						height: 510px;
+						img {
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+							border-radius: 12px;
+						}
+					}
+					.sub-images {
+						width: 140px;
+						height: auto;
+						flex-direction: column;
+						gap: 10px;
+						.sub-img-box {
+							width: 130px;
+							height: 120px;
+							cursor: pointer;
+							img {
+								width: 100%;
+								height: 100%;
+								object-fit: cover;
+								border-radius: 12px;
+							}
+						}
+					}
+				}
+				.info {
+					width: 70%;
 					height: auto;
 					flex-direction: row;
 					justify-content: space-between;
+					margin-top: 50px;
 					.left-box {
-						width: 50%;
+						width: 90%;
 						height: auto;
 						.title-main {
-							color: #181a20;
+							color: #003751;
 							font-family: $font;
-							font-size: 30px;
+							font-size: 36px;
 							font-style: normal;
 							font-weight: 600;
 							line-height: normal;
 							letter-spacing: 0.6px;
 							text-transform: capitalize;
+							margin-bottom: 20px;
 						}
 						.top-box {
 							width: auto;
@@ -56,7 +95,7 @@
 								align-items: center;
 								gap: 7px;
 								.buy-rent {
-									color: #eb6753;
+									color: #003751;
 									font-family: $font;
 									font-size: 15px;
 									font-style: normal;
@@ -77,20 +116,40 @@
 							width: auto;
 							height: auto;
 							flex-direction: row;
-							gap: 15px;
+							gap: 25px;
 							.option {
 								width: auto;
-								height: auto;
+								height: 35px;
 								flex-direction: row;
-								gap: 8px;
+								gap: 10px;
 								p {
-									color: #181a20;
+									color: #003751;
 									font-family: $font;
-									font-size: 15px;
+									font-size: 18px;
 									font-style: normal;
 									font-weight: 400;
 									line-height: normal;
+									margin-top: 5px;
 								}
+							}
+						}
+						.price {
+							color: #003751;
+							font-family: $font;
+							font-size: 28px;
+							font-style: normal;
+							font-weight: 600;
+							line-height: normal;
+							letter-spacing: 0.52px;
+							margin-top: 50px;
+							span {
+								color: #717171;
+								font-family: $font;
+								font-size: 20px;
+								font-style: normal;
+								font-weight: 600;
+								line-height: normal;
+								letter-spacing: 0.52px;
 							}
 						}
 					}
@@ -155,38 +214,6 @@
 						}
 					}
 				}
-				.images {
-					width: 100%;
-					height: auto;
-					gap: 10px;
-					.main-image {
-						width: 100%;
-						height: 600px;
-						img {
-							width: 100%;
-							height: 100%;
-							object-fit: cover;
-							border-radius: 12px;
-						}
-					}
-					.sub-images {
-						width: 100%;
-						height: auto;
-						flex-direction: row;
-						gap: 10px;
-						.sub-img-box {
-							width: 120px;
-							height: 120px;
-							cursor: pointer;
-							img {
-								width: 100%;
-								height: 100%;
-								object-fit: cover;
-								border-radius: 12px;
-							}
-						}
-					}
-				}
 			}
 			.property-desc-config {
 				width: 100%;
@@ -213,7 +240,7 @@
 								align-items: center;
 								justify-content: center;
 								border-radius: 12px;
-								border: 1px solid #ddd;
+								border: 1px solid #003751;
 								img {
 									width: 35px;
 									height: auto;
@@ -223,7 +250,7 @@
 								width: auto;
 								height: auto;
 								.title {
-									color: #181a20;
+									color: #003751;
 									font-family: $font;
 									font-size: 15px;
 									font-style: normal;
@@ -231,7 +258,7 @@
 									line-height: normal;
 								}
 								.option-data {
-									color: #181a20;
+									color: #003751;
 									font-family: $font;
 									font-size: 15px;
 									font-style: normal;
@@ -247,7 +274,8 @@
 						gap: 50px;
 						padding: 29px 38px 50px 38px;
 						border-radius: 12px;
-						border: 1px solid #c4c4c4;
+						border: 1px solid #003751;
+						background: #fff;
 						.top {
 							width: 100%;
 							height: auto;
@@ -318,29 +346,65 @@
 							}
 						}
 					}
-					.floor-plans-config {
+					.facilities-config {
 						width: 100%;
 						height: auto;
 						gap: 30px;
 						padding: 30px 38px;
 						border-radius: 12px;
-						border: 1px solid #c4c4c4;
+						border: 1px solid #003751;
+						background: #fff;
 						.title {
-							color: #181a20;
+							color: #003751;
 							font-family: $font;
 							font-size: 17px;
 							font-style: normal;
 							font-weight: 600;
 							line-height: normal;
 						}
-						.image-box {
+						.facilities-wrap {
+							display: flex;
+							flex-direction: row;
+							justify-content: space-between;
+							align-items: center;
+							.facility {
+								display: flex;
+								flex-direction: column;
+								justify-content: center;
+								align-items: center;
+								p {
+									color: #003751;
+									font-family: $font;
+									font-size: 14px;
+									font-style: normal;
+									font-weight: 400;
+									line-height: normal;
+								}
+							}
+						}
+						.check-time-wrap {
 							width: 100%;
-							height: 510px;
-							border: 1px solid #c4c4c4;
-							img {
-								width: 100%;
-								height: 100%;
-								object-fit: cover;
+							display: flex;
+							flex-direction: row;
+							justify-content: space-between;
+							align-items: center;
+							.check-time {
+								width: 400px;
+								height: 70px;
+								background: #f6f6f6;
+								border-radius: 10px;
+								display: flex;
+								flex-direction: column;
+								justify-content: center;
+								align-items: center;
+								span {
+									color: #181a20;
+									font-family: $font;
+									font-size: 15px;
+									font-style: normal;
+									font-weight: 600;
+									line-height: normal;
+								}
 							}
 						}
 					}
@@ -350,9 +414,10 @@
 						gap: 30px;
 						padding: 30px 38px;
 						border-radius: 12px;
-						border: 1px solid #c4c4c4;
+						border: 1px solid #003751;
+						background: #fff;
 						.title {
-							color: #181a20;
+							color: #003751;
 							font-family: $font;
 							font-size: 17px;
 							font-style: normal;
@@ -372,7 +437,8 @@
 						height: auto;
 						padding: 30px 38px 45px 38px;
 						border-radius: 12px;
-						border: 1px solid #c4c4c4;
+						border: 1px solid #003751;
+						background: #fff;
 						.filter-box {
 							width: 100%;
 							height: auto;
@@ -387,7 +453,7 @@
 								gap: 12px;
 								.reviews {
 									width: 153.6px;
-									color: #181a20;
+									color: #003751;
 									font-family: $font;
 									font-size: 17px;
 									font-style: normal;
@@ -429,7 +495,10 @@
 								width: 100%;
 								height: auto;
 								padding-bottom: 10px;
-								border-bottom: 1px solid #c4c4c4;
+								// border: 1px solid #003751;
+								border-radius: 20px;
+								background: url('../../../public/img/banner/topAgentsBg.png');
+								padding: 5px 0 0 20px;
 								.review-mb-info {
 									width: 100%;
 									height: auto;
@@ -447,12 +516,11 @@
 											justify-content: center;
 											border-radius: 50%;
 											background: #f6f6f6;
-											border: 1px solid #b9b9b9;
 											object-fit: cover;
 										}
 										.name {
 											width: 100%;
-											color: #181a20;
+											color: #fff;
 											font-family: $font;
 											font-size: 15px;
 											font-style: normal;
@@ -462,7 +530,7 @@
 										}
 										.date {
 											width: 100%;
-											color: #181a20;
+											color: #fff;
 											font-family: $font;
 											font-size: 13px;
 											font-style: normal;
@@ -479,7 +547,7 @@
 									height: auto;
 									margin-top: 15px;
 									.description {
-										color: #181a20;
+										color: #fff;
 										font-family: $font;
 										font-size: 14px;
 										font-style: normal;
@@ -499,12 +567,12 @@
 					}
 					.leave-review-config {
 						border-radius: 12px;
-						border: 1px solid #c4c4c4;
+						border: 1px solid #003751;
 						background: #fff;
 						box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
 						padding: 30px 38px;
 						.main-title {
-							color: #181a20;
+							color: #003751;
 							font-family: $font;
 							font-size: 17px;
 							font-style: normal;
@@ -513,7 +581,7 @@
 						}
 						.review-title {
 							margin-top: 20px;
-							color: #181a20;
+							color: #003751;
 							font-family: $font;
 							font-size: 14px;
 							font-style: normal;
@@ -539,7 +607,7 @@
 							display: flex;
 							justify-content: flex-end;
 							button:disabled {
-								background: #dfdfdf;
+								background: #ffc700;
 							}
 							.submit-review {
 								display: flex;
@@ -550,7 +618,7 @@
 								align-items: center;
 								gap: 10px;
 								border-radius: 12px;
-								border: 1px solid #c4c4c4;
+								// border: 1px solid #c4c4c4;
 								cursor: pointer;
 								.title {
 									color: #181a20;
@@ -570,7 +638,7 @@
 					padding: 30px 25px;
 					gap: 20px;
 					border-radius: 12px;
-					border: 1px solid rgba(196, 196, 196, 0.79);
+					border: 1px solid #003751;
 					background: #fff;
 					box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
 					.info-box {
@@ -578,7 +646,7 @@
 						width: 100%;
 						gap: 8px;
 						.main-title {
-							color: #181a20;
+							color: #003751;
 							font-family: $font;
 							font-size: 17px;
 							font-style: normal;
@@ -599,7 +667,7 @@
 							.name-phone-listings {
 								gap: 5px;
 								.name {
-									color: #181a20;
+									color: #003751;
 									font-family: $font;
 									font-size: 15px;
 									font-style: normal;
@@ -612,7 +680,7 @@
 									align-items: center;
 									gap: 10px;
 									.number {
-										color: #181a20;
+										color: #003751;
 										font-family: $font;
 										font-size: 15px;
 										font-style: normal;
@@ -621,7 +689,7 @@
 									}
 								}
 								.listings {
-									color: #181a20;
+									color: #003751;
 									font-family: $font;
 									font-size: 14px;
 									font-style: normal;
@@ -632,7 +700,7 @@
 							}
 						}
 						.sub-title {
-							color: #181a20;
+							color: #003751;
 							font-family: $font;
 							font-size: 14px;
 							font-style: normal;
@@ -690,9 +758,9 @@
 							align-items: center;
 							gap: 10px;
 							border-radius: 12px;
-							background: #eb6753;
+							background: #ffc700;
 							.title {
-								color: #fff;
+								color: #181a20;
 								font-family: $font;
 								font-size: 15px;
 								font-style: normal;
@@ -716,7 +784,7 @@
 					.title-box {
 						width: 30%;
 						.main-title {
-							color: #181a20;
+							color: #003751;
 							font-family: $font;
 							font-size: 30px;
 							font-style: normal;
@@ -726,7 +794,7 @@
 							text-transform: capitalize;
 						}
 						.sub-title {
-							color: #181a20;
+							color: #003751;
 							font-family: $font;
 							font-size: 14px;
 							font-style: normal;
@@ -738,6 +806,7 @@
 						flex-direction: row;
 						align-items: center;
 						gap: 22px;
+						color: #003751;
 					}
 				}
 				.cards-box {
