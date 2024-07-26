@@ -86,15 +86,15 @@ const PropertyCard = (props: PropertyCardType) => {
 						<Stack className="type">
 							<Typography
 								sx={{ fontWeight: 500, fontSize: '14px' }}
-								className={property.propertyRent ? '' : 'disabled-type'}
+								className={property.propertyBook ? '' : 'disabled-type'}
 							>
-								Rent
+								Book
 							</Typography>
 							<Typography
 								sx={{ fontWeight: 500, fontSize: '14px' }}
-								className={property.propertyBarter ? '' : 'disabled-type'}
+								className={property.propertyRent ? '' : 'disabled-type'}
 							>
-								Barter
+								Rent
 							</Typography>
 						</Stack>
 					</Stack>

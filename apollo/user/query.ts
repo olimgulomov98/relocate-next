@@ -99,7 +99,7 @@ export const GET_PROPERTY = gql`
 			propertyLikes
 			propertyImages
 			propertyDesc
-			propertyBarter
+			propertyBook
 			propertyRent
 			memberId
 			soldAt
@@ -156,7 +156,7 @@ export const GET_PROPERTIES = gql`
 				propertyRank
 				propertyImages
 				propertyDesc
-				propertyBarter
+				propertyBook
 				propertyRent
 				memberId
 				soldAt
@@ -217,7 +217,7 @@ export const GET_AGENT_PROPERTIES = gql`
 				propertyLikes
 				propertyImages
 				propertyDesc
-				propertyBarter
+				propertyBook
 				propertyRent
 				memberId
 				soldAt
@@ -253,7 +253,7 @@ export const GET_FAVORITES = gql`
 				propertyRank
 				propertyImages
 				propertyDesc
-				propertyBarter
+				propertyBook
 				propertyRent
 				memberId
 				soldAt
@@ -316,7 +316,7 @@ export const GET_VISITED = gql`
 				propertyRank
 				propertyImages
 				propertyDesc
-				propertyBarter
+				propertyBook
 				propertyRent
 				memberId
 				soldAt
@@ -613,6 +613,28 @@ export const GET_MEMBER_FOLLOWINGS = gql`
 			metaCounter {
 				total
 			}
+		}
+	}
+`;
+
+/**************************
+ *      Notification      *
+ *************************/
+
+export const GET_NOTIFICATIONS = gql`
+	query GetNotifications {
+		getNotifications {
+			_id
+			notificationType
+			notificationStatus
+			notificationGroup
+			notificationTitle
+			notificationDesc
+			authorId
+			receiverId
+			propertyId
+			articleId
+			createdAt
 		}
 	}
 `;

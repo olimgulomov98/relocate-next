@@ -12,7 +12,7 @@ export interface PropertyInput {
 	propertyRooms: number;
 	propertyImages: string[];
 	propertyDesc?: string;
-	propertyBarter?: boolean;
+	propertyBook?: boolean;
 	propertyRent?: boolean;
 	memberId?: string;
 	constructedAt?: Date;

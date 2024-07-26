@@ -63,8 +63,8 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
 					<div className={'bott'}>
 						<p>
-							{property.propertyRent ? 'Rent' : ''} {property.propertyRent && property.propertyBarter && '/'}{' '}
-							{property.propertyBarter ? 'Barter' : ''}
+							{property.propertyRent ? 'Rent' : ''} {property.propertyRent && property.propertyBook && '/'}{' '}
+							{property.propertyBook ? 'Book' : ''}
 						</p>
 						<div className="view-like-box">
 							<IconButton color={'default'}>

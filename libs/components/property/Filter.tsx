@@ -764,7 +764,7 @@ const Filter = (props: FilterType) => {
 							onChange={propertyOptionSelectHandler}
 						/>
 						<label htmlFor={'Barter'} style={{ cursor: 'pointer', color: '#003531' }}>
-							<Typography className="propert-type">Barter</Typography>
+							<Typography className="propert-type">Book</Typography>
 						</label>
 					</Stack>
 					<Stack className={'input-box'}>

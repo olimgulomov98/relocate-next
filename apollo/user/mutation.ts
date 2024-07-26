@@ -139,7 +139,7 @@ export const CREATE_PROPERTY = gql`
 			propertyLikes
 			propertyImages
 			propertyDesc
-			propertyBarter
+			propertyBook
 			propertyRent
 			memberId
 			soldAt
@@ -168,7 +168,7 @@ export const UPDATE_PROPERTY = gql`
 			propertyLikes
 			propertyImages
 			propertyDesc
-			propertyBarter
+			propertyBook
 			propertyRent
 			memberId
 			soldAt
@@ -197,7 +197,7 @@ export const LIKE_TARGET_PROPERTY = gql`
 			propertyLikes
 			propertyImages
 			propertyDesc
-			propertyBarter
+			propertyBook
 			propertyRent
 			memberId
 			soldAt

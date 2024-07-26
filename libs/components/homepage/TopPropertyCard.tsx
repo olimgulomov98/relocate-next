@@ -64,8 +64,8 @@ const TopPropertyCard = (props: TopPropertyCardProps) => {
 					<div className={'bott'}>
 						<p>
 							{' '}
-							{property.propertyRent ? 'Rent' : ''} {property.propertyRent && property.propertyBarter && '/'}{' '}
-							{property.propertyBarter ? 'Barter' : ''}
+							{property.propertyRent ? 'Rent' : ''} {property.propertyRent && property.propertyBook && '/'}{' '}
+							{property.propertyBook ? 'Book' : ''}
 						</p>
 						<div className="view-like-box">
 							<IconButton color={'default'}>
@@ -137,8 +137,8 @@ const TopPropertyCard = (props: TopPropertyCardProps) => {
 						</div>
 						<p className="rent">
 							{' '}
-							{property.propertyRent ? 'Rent' : ''} {property.propertyRent && property.propertyBarter && '/'}{' '}
-							{property.propertyBarter ? 'Barter' : ''}
+							{property.propertyRent ? 'Rent' : ''} {property.propertyRent && property.propertyBook && '/'}{' '}
+							{property.propertyBook ? 'Book' : ''}
 						</p>
 						<Button className="book-btn" onClick={() => pushDetailHandler(property._id)}>
 							Book now

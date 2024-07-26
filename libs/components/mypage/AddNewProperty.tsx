@@ -46,7 +46,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 			propertyType: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyType : '',
 			propertyLocation: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyLocation : '',
 			propertyAddress: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyAddress : '',
-			propertyBarter: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyBarter : false,
+			propertyBook: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyBook : false,
 			propertyRent: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyRent : false,
 			propertyRooms: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyRooms : 0,
 			propertyBeds: getPropertyData?.getProperty ? getPropertyData?.getProperty?.propertyBeds : 0,
@@ -116,7 +116,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 			insertPropertyData.propertyType === '' || // @ts-ignore
 			insertPropertyData.propertyLocation === '' || // @ts-ignore
 			insertPropertyData.propertyAddress === '' || // @ts-ignore
-			insertPropertyData.propertyBarter === '' || // @ts-ignore
+			insertPropertyData.propertyBook === '' || // @ts-ignore
 			insertPropertyData.propertyRent === '' ||
 			insertPropertyData.propertyRooms === 0 ||
 			insertPropertyData.propertyBeds === 0 ||
@@ -284,13 +284,13 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 
 							<Stack className="config-row">
 								<Stack className="price-year-after-price">
-									<Typography className="title">Barter</Typography>
+									<Typography className="title">Book</Typography>
 									<select
 										className={'select-description'}
-										value={insertPropertyData.propertyBarter ? 'yes' : 'no'}
-										defaultValue={insertPropertyData.propertyBarter ? 'yes' : 'no'}
+										value={insertPropertyData.propertyBook ? 'yes' : 'no'}
+										defaultValue={insertPropertyData.propertyBook ? 'yes' : 'no'}
 										onChange={({ target: { value } }) =>
-											setInsertPropertyData({ ...insertPropertyData, propertyBarter: value === 'yes' })
+											setInsertPropertyData({ ...insertPropertyData, propertyBook: value === 'yes' })
 										}
 									>
 										<option disabled={true} selected={true}>
@@ -518,7 +518,7 @@ AddProperty.defaultProps = {
 		propertyType: '',
 		propertyLocation: '',
 		propertyAddress: '',
-		propertyBarter: false,
+		propertyBook: false,
 		propertyRent: false,
 		propertyRooms: 0,
 		propertyBeds: 0,

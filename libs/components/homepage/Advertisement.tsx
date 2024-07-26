@@ -53,7 +53,7 @@ const Advertisement = () => {
 			<Stack className={'advertisement-frame'}>
 				<Stack direction={'row'} justifyContent={'space-between'}>
 					<div className="big-city">
-						<img src="./img/banner/cities/BUSAN.webp" alt="" />
+						<img src="./img/banner/cities/DUBAI.webp" alt="" />
 						<span>DUBAI</span>
 					</div>
 					<video autoPlay muted loop playsInline preload="auto">
@@ -61,30 +61,30 @@ const Advertisement = () => {
 					</video>
 					<div className="big-city">
 						<p>capital city</p>
-						<img src="./img/banner/cities/SEOUL.webp" alt="" />
+						<img src="./img/banner/cities/ABU_DHABI.webp" alt="" />
 						<span>ABU DHABI</span>
 					</div>
 				</Stack>
 
 				<Stack direction={'row'} justifyContent={'space-between'}>
 					<div className="small-city">
-						<img src="./img/banner/cities/DAEGU.webp" alt="" />
+						<img src="./img/banner/cities/SHARJAH.webp" alt="" />
 						<span>Sharjah</span>
 					</div>
 					<div className="small-city">
-						<img src="./img/banner/cities/JEJU.webp" alt="" />
+						<img src="./img/banner/cities/AJMAN.webp" alt="" />
 						<span>Ajman</span>
 					</div>
 					<div className="small-city">
-						<img src="./img/banner/cities/GWANGJU.webp" alt="" />
-						<span>Ras Aa Khaimah</span>
+						<img src="./img/banner/cities/RAS_AL_KHAIMAH.webp" alt="" />
+						<span>Ras Al Khaimah</span>
 					</div>
 					<div className="small-city">
-						<img src="./img/banner/cities/INCHEON.webp" alt="" />
+						<img src="./img/banner/cities/UMM_AL_QUWAIN.webp" alt="" />
 						<span>Umm Al Quwain</span>
 					</div>
 					<div className="small-city">
-						<img src="./img/banner/cities/CHONJU.webp" alt="" />
+						<img src="./img/banner/cities/FUJAIRAH.webp" alt="" />
 						<span>Fujairah</span>
 					</div>
 				</Stack>

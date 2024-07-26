@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Box, Divider, Typography } from '@mui/material';
+import { Stack, Box, Divider, Typography, Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -10,6 +10,7 @@ import { useReactiveVar } from '@apollo/client';
 import { userVar } from '../../../apollo/store';
 import { useRouter } from 'next/router';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import PinDropIcon from '@mui/icons-material/PinDrop';
 
 interface PropertyBigCardProps {
 	property: Property;
@@ -21,17 +22,25 @@ const PropertyBigCard = (props: PropertyBigCardProps) => {
 	const device = useDeviceDetect();
 	const user = useReactiveVar(userVar);
 	const router = useRouter();
+	const agentImage = property?.memberData?.memberImage
+		? `${process.env.REACT_APP_API_URL}/${property?.memberData?.memberImage}`
+		: '/img/profile/defaultUser.svg';
 
 	/** HANDLERS **/
 	const goPropertyDetatilPage = (propertyId: string) => {
 		router.push(`/property/detail?id=${propertyId}`);
 	};
 
+	const pushDetailHandler = async (propertyId: string) => {
+		console.log('propertyId: ', propertyId);
+		await router.push({ pathname: '/property/detail', query: { id: propertyId } });
+	};
+
 	if (device === 'mobile') {
 		return <div>APARTMENT BIG CARD</div>;
 	} else {
 		return (
-			<Stack className="property-big-card-box" onClick={() => goPropertyDetatilPage(property?._id)}>
+			<Stack className="property-big-card-box">
 				<Box
 					component={'div'}
 					className={'card-img'}
@@ -39,16 +48,17 @@ const PropertyBigCard = (props: PropertyBigCardProps) => {
 				>
 					{property && property?.propertyRank >= topPropertyRank && (
 						<div className={'status'}>
-							<img src="/img/icons/electricity.svg" alt="" />
+							<img src="/img/icons/electricity.webp" alt="" />
 							<span>top</span>
 						</div>
 					)}
-
-					<div className={'price'}>${formatterStr(property?.propertyPrice)}</div>
 				</Box>
 				<Box component={'div'} className={'info'}>
 					<strong className={'title'}>{property?.propertyTitle}</strong>
-					<p className={'desc'}>{property?.propertyAddress}</p>
+					<p className={'desc'}>
+						<PinDropIcon className={'locationIcon'} />
+						{property?.propertyAddress}
+					</p>
 					<div className={'options'}>
 						<div>
 							<img src="/img/icons/bed.svg" alt="" />
@@ -63,11 +73,9 @@ const PropertyBigCard = (props: PropertyBigCardProps) => {
 							<span>{property?.propertySquare} m2</span>
 						</div>
 					</div>
-					<Divider sx={{ mt: '15px', mb: '17px' }} />
 					<div className={'bott'}>
-						<div>
-							{property?.propertyRent ? <p>Rent</p> : <span>Rent</span>}
-							{property?.propertyBarter ? <p>Barter</p> : <span>Barter</span>}
+						<div className={'price'}>
+							${property?.propertyPrice} <span>/ night</span>
 						</div>
 						<div className="buttons-box">
 							<IconButton color={'default'}>
@@ -89,6 +97,19 @@ const PropertyBigCard = (props: PropertyBigCardProps) => {
 							</IconButton>
 							<Typography className="view-cnt">{property?.propertyLikes}</Typography>
 						</div>
+					</div>
+					<div className={'agent'}>
+						<div>
+							<img src={agentImage} alt="" />
+							<p>{property.memberData?.memberNick}</p>
+						</div>
+						<div className={'rent'}>
+							{property?.propertyBook ? <p>Book</p> : <span>Book</span>}
+							{property?.propertyRent ? <p>Rent</p> : <span>Rent</span>}
+						</div>
+						<Button className="book-btn" onClick={() => goPropertyDetatilPage(property?._id)}>
+							Book now
+						</Button>
 					</div>
 				</Box>
 			</Stack>
