@@ -496,7 +496,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 						<Stack className="buttons-row">
 							{router.query.propertyId ? (
 								<Button className="next-button" disabled={doDisabledCheck()} onClick={updatePropertyHandler}>
-									<Typography className="next-button-text">Save</Typography>
+									<Typography className="next-button-text">Update</Typography>
 								</Button>
 							) : (
 								<Button className="next-button" disabled={doDisabledCheck()} onClick={insertPropertyHandler}>

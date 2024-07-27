@@ -28,7 +28,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GET_COMMENTS, GET_PROPERTIES, GET_PROPERTY } from '../../apollo/user/query';
 import { T } from '../../libs/types/common';
 import { Direction, Message } from '../../libs/enums/common.enum';
-import { CREATE_COMMENT, LIKE_TARGET_PROPERTY } from '../../apollo/user/mutation';
+import { CREATE_COMMENT, CREATE_MESSAGE, LIKE_TARGET_PROPERTY } from '../../apollo/user/mutation';
 import { sweetErrorHandling, sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
 import SmokeFreeIcon from '@mui/icons-material/SmokeFree';
 import LocalParkingIcon from '@mui/icons-material/LocalParking';
@@ -38,6 +38,7 @@ import DeckIcon from '@mui/icons-material/Deck';
 import FreeBreakfastIcon from '@mui/icons-material/FreeBreakfast';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { MessageInput } from '../../libs/types/message/message.input';
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -58,6 +59,13 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 	const [commentInquiry, setCommentInquiry] = useState<CommentsInquiry>(initialComment);
 	const [propertyComments, setPropertyComments] = useState<Comment[]>([]);
 	const [commentTotal, setCommentTotal] = useState<number>(0);
+	const [insertMessageData, setInsertMessageData] = useState<MessageInput>({
+		name: '',
+		phone: '',
+		email: '',
+		message: '',
+		messageRefId: `${property?.memberData?._id}`,
+	});
 	const [insertCommentData, setInsertCommentData] = useState<CommentInput>({
 		commentGroup: CommentGroup.PROPERTY,
 		commentContent: '',
@@ -67,6 +75,7 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 	/** APOLLO REQUESTS **/
 	const [likeTargetProperty] = useMutation(LIKE_TARGET_PROPERTY);
 	const [createComment] = useMutation(CREATE_COMMENT);
+	const [createMessage] = useMutation(CREATE_MESSAGE);
 
 	const {
 		loading: getPropertyLoading,
@@ -138,6 +147,10 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 				...insertCommentData,
 				commentRefId: router.query.id as string,
 			});
+			setInsertMessageData({
+				...insertMessageData,
+				messageRefId: router.query.id as string,
+			});
 		}
 	}, [router]);
 
@@ -195,6 +208,30 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 			await getCommentsRefetch({ input: commentInquiry });
 		} catch (err: any) {
 			await sweetErrorHandling(err);
+		}
+	};
+
+	const createMessageHandler = async () => {
+		try {
+			if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
+			await createMessage({ variables: { input: insertMessageData } });
+
+			setInsertMessageData({ ...insertMessageData, name: '', phone: '', email: '', message: '' });
+
+			// await getCommentsRefetch({ input: commentInquiry });
+		} catch (err: any) {
+			await sweetErrorHandling(err);
+		}
+	};
+
+	const doDisabledCheck = () => {
+		if (
+			insertMessageData.name === '' ||
+			insertMessageData.phone === '' ||
+			insertMessageData.email === '' ||
+			insertMessageData.message === ''
+		) {
+			return true;
 		}
 	};
 
@@ -613,22 +650,49 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 								</Stack>
 								<Stack className={'info-box'}>
 									<Typography className={'sub-title'}>Name</Typography>
-									<input type={'text'} placeholder={'Enter your name'} />
+									<input
+										type={'text'}
+										placeholder={'Enter your name'}
+										value={insertMessageData.name}
+										onChange={({ target: { value } }: any) => {
+											setInsertMessageData({ ...insertMessageData, name: value });
+										}}
+									/>
 								</Stack>
 								<Stack className={'info-box'}>
 									<Typography className={'sub-title'}>Phone</Typography>
-									<input type={'text'} placeholder={'Enter your phone'} />
+									<input
+										type={'text'}
+										placeholder={'Enter your phone'}
+										value={insertMessageData.phone}
+										onChange={({ target: { value } }: any) => {
+											setInsertMessageData({ ...insertMessageData, phone: value });
+										}}
+									/>
 								</Stack>
 								<Stack className={'info-box'}>
 									<Typography className={'sub-title'}>Email</Typography>
-									<input type={'text'} placeholder={'creativelayers088'} />
+									<input
+										type={'text'}
+										placeholder={'creativelayers088'}
+										value={insertMessageData.email}
+										onChange={({ target: { value } }: any) => {
+											setInsertMessageData({ ...insertMessageData, email: value });
+										}}
+									/>
 								</Stack>
 								<Stack className={'info-box'}>
 									<Typography className={'sub-title'}>Message</Typography>
-									<textarea placeholder={'Hello, I am interested in \n' + '[Renovated property at  floor]'}></textarea>
+									<textarea
+										placeholder={'Hello, I am interested in \n' + '[Renovated property at  floor]'}
+										value={insertMessageData.message}
+										onChange={({ target: { value } }: any) => {
+											setInsertMessageData({ ...insertMessageData, message: value });
+										}}
+									></textarea>
 								</Stack>
 								<Stack className={'info-box'}>
-									<Button className={'send-message'}>
+									<Button className={'send-message'} disabled={doDisabledCheck()} onClick={createMessageHandler}>
 										<Typography className={'title'}>Send Message</Typography>
 										<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
 											<g clipPath="url(#clip0_6975_593)">

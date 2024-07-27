@@ -8,8 +8,9 @@ import { T } from '../types/common';
 import { useState } from 'react';
 import { userVar } from '../../apollo/store';
 import { Notification } from '../types/notification/notification';
-import { Badge, Box, Stack } from '@mui/material';
+import { Badge, Box, Button, Stack } from '@mui/material';
 import AccessibleIcon from '@mui/icons-material/Accessible';
+import { NotificationStatus } from '../enums/notification.enum';
 
 const BasicPopover = () => {
 	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
@@ -47,13 +48,17 @@ const BasicPopover = () => {
 	console.log('user', user);
 	return (
 		<div>
-			<Badge badgeContent={notification.length} color="secondary">
-				<NotificationsOutlinedIcon
-					// component={'button'}
-					style={{ background: '#060706', cursor: 'pointer', borderRadius: '20px', padding: '2px' }}
-					className={'notification-icon'}
-					onClick={handleClick}
-				/>
+			<Badge
+				badgeContent={
+					notification?.filter(
+						(ele) => ele.receiverId === user._id && ele.notificationStatus === NotificationStatus.WAIT,
+					).length
+				}
+				color="secondary"
+			>
+				<Button onClick={handleClick}>
+					<NotificationsOutlinedIcon />
+				</Button>
 			</Badge>
 			<Popover
 				id={id}
@@ -69,17 +74,16 @@ const BasicPopover = () => {
 					horizontal: 'left',
 				}}
 			>
-				<Box component={'div'} p={2}>
-					<p>You have {notification.length} new notifications</p>
-				</Box>
 				<Typography sx={{ p: 2, width: '500px', height: '100%', color: 'black', border: '2px solid green' }}>
-					{notification?.map((notify: Notification) => {
-						return (
-							<Stack width={'400px'} height={'100%'} border={'2px solid red'}>
-								<div>{notify.notificationTitle}</div>
-								<div>{notify.notificationDesc}</div>
-							</Stack>
-						);
+					{notification?.map((ele: Notification) => {
+						if (ele.receiverId === user._id) {
+							return (
+								<Stack key={ele._id} width={'400px'} height={'100%'} border={'2px solid red'}>
+									<div>{ele.notificationTitle}</div>
+									<div>{ele.notificationDesc}</div>
+								</Stack>
+							);
+						}
 					})}
 				</Typography>
 			</Popover>

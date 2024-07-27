@@ -18,6 +18,4 @@ export interface notificationInput {
 	propertyId?: string;
 
 	articleId?: string;
-
-	/** from aggregation **/
 }
