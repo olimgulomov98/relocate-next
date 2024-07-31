@@ -330,20 +330,30 @@ export const UNSUBSCRIBE = gql`
 `;
 
 /**************************
- *         COMMENT        *
+ *         MESSAGE        *
  *************************/
 
 export const CREATE_MESSAGE = gql`
-	mutation CreateMessage($input: MessageInput!) {
+	mutation CreateMessage($input: ContactInput!) {
 		createMessage(input: $input) {
 			_id
 			name
 			phone
 			email
 			message
-			messageRefId
+			contactRefId
 			memberId
 			createdAt
 		}
+	}
+`;
+
+/**************************
+ *      NOTIFICATION      *
+ *************************/
+
+export const MARK_NOTIFICATION_READ = gql`
+	mutation MarkNotificationAsRead($notificationId: String!) {
+		markNotificationAsRead(notificationId: $notificationId)
 	}
 `;

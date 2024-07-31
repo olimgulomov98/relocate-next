@@ -283,7 +283,7 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 								/>
 							</Tabs>
 						</Stack>
-						<div className="community-detail-config">
+						<Stack className="community-detail-config">
 							<Stack className="title-box">
 								<Stack className="left">
 									<Typography className="title">{articleCategory} BOARD</Typography>
@@ -305,7 +305,7 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 									Write
 								</Button>
 							</Stack>
-							<div className="config">
+							<Stack className="config">
 								<Stack className="first-box-config">
 									<Stack className="content-and-info">
 										<Stack className="content">
@@ -518,8 +518,8 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 										/>
 									</Stack>
 								)}
-							</div>
-						</div>
+							</Stack>
+						</Stack>
 					</Stack>
 				</div>
 			</div>

@@ -622,8 +622,8 @@ export const GET_MEMBER_FOLLOWINGS = gql`
  *************************/
 
 export const GET_NOTIFICATIONS = gql`
-	query GetNotifications {
-		getNotifications {
+	query GetNotificationsByUserId($userId: String!) {
+		getNotificationsByUserId(userId: $userId) {
 			_id
 			notificationType
 			notificationStatus

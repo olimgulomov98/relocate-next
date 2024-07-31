@@ -77,7 +77,7 @@ const Footer = () => {
 		return (
 			<>
 				<Stack className={'sea-frame'}>
-					<img src="./img/Rectangle.png" alt="" className="rectangle" />
+					<img src="/img/Rectangle.png" alt="" className="rectangle" />
 					<img src="/img/sea.png" alt="" />
 				</Stack>
 				<Stack className={'footer-container'}>

@@ -36,7 +36,6 @@ const AgentList: NextPage = ({ initialInput, ...props }: any) => {
 	const [total, setTotal] = useState<number>(0);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [searchText, setSearchText] = useState<string>('');
-
 	/** APOLLO REQUESTS **/
 	const [likeTargetMember] = useMutation(LIKE_TARGET_MEMBER);
 
@@ -185,6 +184,7 @@ const AgentList: NextPage = ({ initialInput, ...props }: any) => {
 							})
 						)}
 					</Stack>
+
 					<Stack className={'pagination'}>
 						<Stack className="pagination-box">
 							{agents.length !== 0 && Math.ceil(total / searchFilter.limit) > 1 && (

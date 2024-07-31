@@ -38,7 +38,7 @@ import DeckIcon from '@mui/icons-material/Deck';
 import FreeBreakfastIcon from '@mui/icons-material/FreeBreakfast';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { MessageInput } from '../../libs/types/message/message.input';
+import { ContactInput } from '../../libs/types/contact/contact.input';
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -59,12 +59,12 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 	const [commentInquiry, setCommentInquiry] = useState<CommentsInquiry>(initialComment);
 	const [propertyComments, setPropertyComments] = useState<Comment[]>([]);
 	const [commentTotal, setCommentTotal] = useState<number>(0);
-	const [insertMessageData, setInsertMessageData] = useState<MessageInput>({
+	const [insertMessageData, setInsertMessageData] = useState<ContactInput>({
 		name: '',
 		phone: '',
 		email: '',
 		message: '',
-		messageRefId: `${property?.memberData?._id}`,
+		contactRefId: `${property?.memberData?._id}`,
 	});
 	const [insertCommentData, setInsertCommentData] = useState<CommentInput>({
 		commentGroup: CommentGroup.PROPERTY,
@@ -149,7 +149,7 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 			});
 			setInsertMessageData({
 				...insertMessageData,
-				messageRefId: router.query.id as string,
+				contactRefId: router.query.id as string,
 			});
 		}
 	}, [router]);
@@ -217,8 +217,6 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 			await createMessage({ variables: { input: insertMessageData } });
 
 			setInsertMessageData({ ...insertMessageData, name: '', phone: '', email: '', message: '' });
-
-			// await getCommentsRefetch({ input: commentInquiry });
 		} catch (err: any) {
 			await sweetErrorHandling(err);
 		}

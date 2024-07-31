@@ -9,6 +9,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useReactiveVar } from '@apollo/client';
 import { userVar } from '../../../apollo/store';
+import { useRouter } from 'next/router';
+import { sweetErrorHandling } from '../../sweetAlert';
 
 interface AgentCardProps {
 	agent: any;
@@ -17,11 +19,22 @@ interface AgentCardProps {
 
 const AgentCard = (props: AgentCardProps) => {
 	const { agent, likeMemberHandler } = props;
+	const router = useRouter();
 	const device = useDeviceDetect();
 	const user = useReactiveVar(userVar);
 	const imagePath: string = agent?.memberImage
 		? `${REACT_APP_API_URL}/${agent?.memberImage}`
 		: '/img/profile/defaultUser.svg';
+
+	/** HANDLERS **/
+	const redirectToMemberPageHandler = async (memberId: string) => {
+		try {
+			if (memberId === user?._id) await router.push(`/mypage?memberId=${memberId}`);
+			else await router.push(`/member?memberId=${memberId}`);
+		} catch (error) {
+			await sweetErrorHandling(error);
+		}
+	};
 
 	if (device === 'mobile') {
 		return <div>AGENT CARD</div>;
@@ -63,14 +76,16 @@ const AgentCard = (props: AgentCardProps) => {
 							</IconButton>
 							<Typography className="view-cnt">{agent?.memberLikes}</Typography>
 						</Box>
-						<Link
+						{/* <Link
 							href={{
 								pathname: '/agent/detail',
 								query: { agentId: agent?._id },
 							}}
-						>
-							<Button className={'detail-btn'}>Agent Detail</Button>
-						</Link>
+						> */}
+						<Button className={'detail-btn'} onClick={() => redirectToMemberPageHandler(agent?._id as string)}>
+							View Profile
+						</Button>
+						{/* </Link> */}
 					</Box>
 				</Stack>
 			</Stack>

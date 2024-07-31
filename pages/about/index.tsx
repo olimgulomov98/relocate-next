@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 import useDeviceDetect from '../../libs/hooks/useDeviceDetect';
 import withLayoutBasic from '../../libs/components/layout/LayoutBasic';
 import { Stack, Box } from '@mui/material';
+import AgentCard from '../../libs/components/common/AgentCard';
 
 const About: NextPage = () => {
 	const device = useDeviceDetect();
@@ -73,9 +74,9 @@ const About: NextPage = () => {
 						<span className={'title'}>Our Exclusive Agetns</span>
 						<p className={'desc'}>Aliquam lacinia diam quis lacus euismod</p>
 						<Stack className={'wrap'}>
-							{/*{[1, 2, 3, 4, 5].map(() => {*/}
-							{/*	return <AgentCard />;*/}
-							{/*})}*/}
+							{/* {[1, 2, 3, 4, 5].map(() => { */}
+							{/* return <AgentCard />; */}
+							{/* })} */}
 						</Stack>
 					</Stack>
 				</Stack>

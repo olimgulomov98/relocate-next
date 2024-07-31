@@ -2,40 +2,62 @@ import * as React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
-import { useQuery, useReactiveVar } from '@apollo/client';
+import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import { GET_NOTIFICATIONS } from '../../apollo/user/query';
 import { T } from '../types/common';
-import { useState } from 'react';
-import { userVar } from '../../apollo/store';
 import { Notification } from '../types/notification/notification';
+import { userVar } from '../../apollo/store';
 import { Badge, Box, Button, Stack } from '@mui/material';
-import AccessibleIcon from '@mui/icons-material/Accessible';
 import { NotificationStatus } from '../enums/notification.enum';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import { MARK_NOTIFICATION_READ } from '../../apollo/user/mutation';
+dayjs.extend(relativeTime);
+dayjs.locale('ko');
 
-const BasicPopover = () => {
-	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+export default function BasicPopover() {
 	const user = useReactiveVar(userVar);
-	const [notification, setNotification] = useState<Notification[]>([]);
+	const router = useRouter();
+	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+	const [notification, setNotification] = React.useState<Notification[]>([]);
+	const handleClick = (event: React.MouseEvent<HTMLButtonElement>, notificationId: string) => {
+		setAnchorEl(event.currentTarget);
+		// markNotificationsAsRead();
+	};
 
-	// Apollo
-	const {
-		loading: getNotificationsLoading,
-		data: getNotificationsData,
-		error: getNotificationsError,
-		refetch: getNotificationsRefetch,
-	} = useQuery(GET_NOTIFICATIONS, {
-		fetchPolicy: 'cache-and-network',
-		variables: { input: '' },
-		notifyOnNetworkStatusChange: true,
-		onCompleted: (data: T) => {
-			if (data?.getNotifications) setNotification(data?.getNotifications);
+	const [markNotificationAsRead] = useMutation(MARK_NOTIFICATION_READ, {
+		onCompleted: () => {
+			getNotificationsRefetch(); // 성공적으로 업데이트 후 알림 다시 가져오기
+		},
+		onError: (error) => {
+			console.error('Error updating notifications:', error);
 		},
 	});
 
-	/** LIFECYCLES **/
+	const handleClickRead = (notification: Notification) => {
+		markNotificationAsRead({
+			variables: { notificationId: notification._id },
+			onCompleted: () => {
+				// Redirect to the member page after marking as read
+				switch (notification.notificationGroup) {
+					case 'MEMBER':
+						router.push(`/member?memberId=${notification.authorId}`);
+						break;
+					case 'PROPERTY':
+						router.push(`/property/detail?id=${notification.propertyId}`);
+						break;
+					case 'ARTICLE':
+						router.push(`/property/detail?id=${notification.articleId}`);
+						break;
+					default:
+						router.push(`/member?memberId=${notification.authorId}`);
+				}
 
-	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-		setAnchorEl(event.currentTarget);
+				getNotificationsRefetch();
+			},
+		});
 	};
 
 	const handleClose = () => {
@@ -44,8 +66,22 @@ const BasicPopover = () => {
 
 	const open = Boolean(anchorEl);
 	const id = open ? 'simple-popover' : undefined;
+	console.log(notification);
 
-	console.log('user', user);
+	const {
+		loading: getNotificationsLoading,
+		data: getNotificationsData,
+		error: getNotificationsError,
+		refetch: getNotificationsRefetch,
+	} = useQuery(GET_NOTIFICATIONS, {
+		fetchPolicy: 'cache-and-network',
+		variables: { userId: user._id },
+		notifyOnNetworkStatusChange: true,
+		onCompleted: (data: T) => {
+			if (data?.getNotificationsByUserId) setNotification(data?.getNotificationsByUserId);
+		},
+	});
+
 	return (
 		<div>
 			<Badge
@@ -56,39 +92,45 @@ const BasicPopover = () => {
 				}
 				color="secondary"
 			>
-				<Button onClick={handleClick}>
-					<NotificationsOutlinedIcon />
-				</Button>
+				<NotificationsOutlinedIcon style={{ cursor: 'pointer' }} onClick={handleClick} />
 			</Badge>
+
 			<Popover
+				sx={{ marginTop: 5 }}
+				style={{ height: '500px' }}
 				id={id}
 				open={open}
 				anchorEl={anchorEl}
 				onClose={handleClose}
 				anchorOrigin={{
-					vertical: 'top',
-					horizontal: 'right',
-				}}
-				transformOrigin={{
-					vertical: 'top',
+					vertical: 'bottom',
 					horizontal: 'left',
 				}}
 			>
-				<Typography sx={{ p: 2, width: '500px', height: '100%', color: 'black', border: '2px solid green' }}>
-					{notification?.map((ele: Notification) => {
-						if (ele.receiverId === user._id) {
-							return (
-								<Stack key={ele._id} width={'400px'} height={'100%'} border={'2px solid red'}>
-									<div>{ele.notificationTitle}</div>
-									<div>{ele.notificationDesc}</div>
-								</Stack>
-							);
-						}
-					})}
-				</Typography>
+				{notification?.map((ele: Notification) => {
+					if (ele.receiverId === user._id) {
+						return (
+							<Stack key={ele._id} sx={{ m: 3, cursor: 'pointer' }} onClick={() => handleClickRead(ele)}>
+								<div
+									style={{
+										background: ele.notificationStatus === NotificationStatus.READ ? 'white' : '#e0dfdf',
+										padding: '15px',
+										borderRadius: '15px',
+										border: '1px solid black',
+										width: '400px',
+									}}
+								>
+									<Typography>{ele.notificationTitle}</Typography>
+									<Typography>{ele.notificationDesc}</Typography>
+									<Typography variant="body2" color="textSecondary">
+										{dayjs(ele.createdAt).fromNow()}
+									</Typography>
+								</div>
+							</Stack>
+						);
+					}
+				})}
 			</Popover>
 		</div>
 	);
-};
-
-export default BasicPopover;
+}

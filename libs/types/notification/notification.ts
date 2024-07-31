@@ -1,4 +1,4 @@
-import { Member } from '../member/member';
+// import { Member } from '../member/member';
 import { NotificationGroup, NotificationStatus, NotificationType } from '../../enums/notification.enum';
 
 export interface Notification {
@@ -26,12 +26,12 @@ export interface Notification {
 
 	/** from aggregation **/
 
-	memberData?: Member;
+	// memberData?: Member;
 }
 
-export interface Notifications {
-	list: Notification[];
+// export interface Notifications {
+// 	list: Notification[];
 
-	// @Field(() => [TotalCounter], { nullable: true })
-	// metaCounter: TotalCounter[];
-}
+// @Field(() => [TotalCounter], { nullable: true })
+// metaCounter: TotalCounter[];
+// }

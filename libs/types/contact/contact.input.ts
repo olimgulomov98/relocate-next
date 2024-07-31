@@ -1,8 +1,8 @@
-export interface MessageInput {
+export interface ContactInput {
 	name: string;
 	phone: string;
 	email: string;
 	message: string;
-	messageRefId: string;
+	contactRefId: string;
 	memberId?: string;
 }

@@ -326,15 +326,15 @@
 		.title {
 			color: #717171;
 			font-family: $font;
-			font-size: 13px;
+			font-size: 16px;
 			font-style: normal;
 			font-weight: 400;
 			line-height: normal;
 		}
 		.desc {
-			color: #181a20;
+			color: #003531;
 			font-family: $font;
-			font-size: 15px;
+			font-size: 20px;
 			font-style: normal;
 			font-weight: 600;
 			line-height: 26px;
@@ -365,10 +365,10 @@
 		top: 235px;
 		right: 20px;
 		border-radius: 12px;
-		background: #fff;
+		background: #003531;
 		box-shadow: 0px 6px 15px 0px rgba(64, 79, 104, 0.05);
 		.month {
-			color: #181a20;
+			color: #fff;
 			text-align: center;
 			font-family: $font;
 			font-size: 13px;
@@ -377,7 +377,7 @@
 			line-height: normal;
 		}
 		.day {
-			color: #181a20;
+			color: #fff;
 			font-family: $font;
 			font-size: 20px;
 			font-style: normal;

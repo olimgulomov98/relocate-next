@@ -16,7 +16,7 @@
 					padding: 30px 15px 57px 21px;
 					margin-top: 100px;
 					border-radius: 12px;
-					border: 1px solid rgba(196, 196, 196, 0.79);
+					border: 1px solid #003531;
 					background: #fff;
 					box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
 					.image-info {
@@ -32,7 +32,7 @@
 						.community-name {
 							.name {
 								margin-top: 15px;
-								color: #181a20;
+								color: #003531;
 								font-family: $font;
 								font-size: 15px;
 								font-style: normal;
@@ -48,9 +48,9 @@
 						justify-content: center;
 						align-items: center;
 						border-radius: 6px;
-						border: 1px solid #181a20;
+						border: 1px solid #003531;
 						margin-bottom: 10px;
-						color: #181a20;
+						color: #003531;
 						font-family: $font;
 						font-size: 14px;
 						font-style: normal;
@@ -64,7 +64,7 @@
 						padding: 0;
 						justify-content: center;
 						align-items: center;
-						background-color: #000000;
+						background-color: #003531;
 						color: #ffffff;
 						border-radius: 6px;
 						margin-bottom: 10px;
@@ -88,7 +88,7 @@
 							width: 60%;
 							height: auto;
 							.title {
-								color: #000;
+								color: #003531;
 								font-family: $font;
 								font-size: 24px;
 								font-style: normal;
@@ -110,7 +110,7 @@
 							width: 91px;
 							height: 32px;
 							border-radius: 4px;
-							background: #eb6753;
+							background: #003531;
 							color: #fff;
 							font-family: $font;
 							font-size: 13px;
@@ -125,19 +125,20 @@
 							width: 1012px;
 							min-height: 500px;
 							border-radius: 8px 8px 0px 0px;
-							border: 1px solid #eee;
+							border: 1px solid #003531;
 							box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+							background: #fff;
 							.content-and-info {
 								width: 100%;
 								height: 126px;
 								padding: 35px 25px;
 								flex-direction: row;
 								justify-content: space-between;
-								border-bottom: 1px solid #eee;
+								border-bottom: 1px solid #003531;
 								.content {
 									gap: 12px;
 									.content-data {
-										color: #000;
+										color: #003531;
 										font-family: $font;
 										font-size: 18px;
 										font-style: normal;
@@ -151,18 +152,20 @@
 										align-items: center;
 										gap: 5px;
 										.member-img {
-											width: 30.023px;
-											height: 30px;
+											width: 35.023px;
+											height: 35px;
+											border-radius: 50%;
 											cursor: pointer;
 										}
 										.member-nick {
-											color: #000;
+											color: #003531;
 											font-family: $font;
-											font-size: 13px;
+											font-size: 15px;
 											font-style: normal;
-											font-weight: 400;
+											font-weight: 600;
 											line-height: normal;
 											letter-spacing: 0.13px;
+											margin-left: 5px;
 											cursor: pointer;
 										}
 										.divider {
@@ -234,9 +237,10 @@
 										gap: 5px;
 										border-radius: 2px;
 										border: 1px solid #eee;
-										background: #eb6753;
+										background: #ffc700;
+										border-radius: 15px;
 										p {
-											color: #fff;
+											color: #000;
 											font-family: $font;
 											font-size: 13px;
 											font-style: normal;
@@ -253,9 +257,11 @@
 							height: auto;
 							padding: 30px 24px;
 							gap: 11px;
+							background: #fff;
+							border: 1px solid #003531;
 							.title-text {
 								align-self: flex-start;
-								color: #000;
+								color: #003531;
 								text-align: center;
 								font-family: $font;
 								font-size: 17px;
@@ -291,7 +297,7 @@
 									border: 1px solid #eee;
 									border-top: none;
 									p {
-										color: #000;
+										color: #003531;
 										font-family: $font;
 										font-size: 14px;
 										font-style: normal;
@@ -303,7 +309,7 @@
 										width: 100.077px;
 										height: 100%;
 										border-radius: 0;
-										background: #eb6753;
+										background: #003531;
 										color: #fff;
 										font-family: $font;
 										font-size: 14px;
@@ -318,7 +324,7 @@
 						.comments {
 							width: 100%;
 							height: auto;
-							border: 1px solid #efefef;
+							// border: 1px solid #003531;
 							border-top: none;
 							.comments-title {
 								width: 112.087px;

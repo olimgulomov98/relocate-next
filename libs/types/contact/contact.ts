@@ -1,10 +1,10 @@
-export interface Messages {
+export interface Contacts {
 	_id: string;
 	name: string;
 	phone: string;
 	email: string;
 	message: string;
-	messageRefId: string;
+	contactRefId: string;
 	memberId: string;
 	createdAt: Date;
 }

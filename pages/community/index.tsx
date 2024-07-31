@@ -111,16 +111,9 @@ const Community: NextPage = ({ initialInput, ...props }: T) => {
 				<div className="container">
 					<TabContext value={searchCommunity.search.articleCategory}>
 						<Stack className="main-box">
-							<Stack className="left-config">
-								<Stack className={'image-info'}>
-									<img src={'/img/logo/logoText.svg'} />
-									<Stack className={'community-name'}>
-										<Typography className={'name'}>Nestar Community</Typography>
-									</Stack>
-								</Stack>
-
+							<Stack className="top-config">
 								<TabList
-									orientation="vertical"
+									orientation="horizontal"
 									aria-label="lab API tabs example"
 									TabIndicatorProps={{
 										style: { display: 'none' },
@@ -149,7 +142,7 @@ const Community: NextPage = ({ initialInput, ...props }: T) => {
 									/>
 								</TabList>
 							</Stack>
-							<Stack className="right-config">
+							<Stack className="down-config">
 								<Stack className="panel-config">
 									<Stack className="title-box">
 										<Stack className="left">

@@ -6,41 +6,13 @@
 			flex-direction: column;
 			gap: 64px;
 			.main-box {
-				flex-direction: row;
+				flex-direction: column;
 				gap: 31px;
-				.left-config {
-					width: 266px;
+				.top-config {
+					width: 100%;
 					height: fit-content;
-					gap: 30px;
-					padding: 30px 15px 57px 21px;
 					margin-top: 100px;
 					margin-bottom: 50px;
-					border-radius: 12px;
-					border: 1px solid rgba(196, 196, 196, 0.79);
-					background: #fff;
-					box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
-					.image-info {
-						width: 100%;
-						flex-direction: row;
-						gap: 11px;
-						img {
-							width: 80px;
-							height: 80px;
-							border-radius: 50%;
-							object-fit: cover;
-						}
-						.community-name {
-							.name {
-								margin-top: 15px;
-								color: #181a20;
-								font-family: $font;
-								font-size: 15px;
-								font-style: normal;
-								font-weight: 600;
-								line-height: normal;
-							}
-						}
-					}
 					.tab-button {
 						width: 216.612px;
 						height: 36px;
@@ -48,11 +20,11 @@
 						justify-content: center;
 						align-items: center;
 						border-radius: 6px;
-						border: 1px solid #181a20;
+						border: 1px solid #003531;
 						margin-bottom: 10px;
-						color: #181a20;
+						color: #003531;
 						font-family: $font;
-						font-size: 14px;
+						font-size: 16px;
 						font-style: normal;
 						font-weight: 500;
 						line-height: 150%;
@@ -64,19 +36,19 @@
 						padding: 0;
 						justify-content: center;
 						align-items: center;
-						background-color: #000000;
+						background-color: #003531;
 						color: #ffffff;
 						border-radius: 6px;
 						margin-bottom: 10px;
 						font-family: $font;
-						font-size: 14px;
+						font-size: 16px;
 						font-style: normal;
 						font-weight: 500;
 						line-height: 150%;
 						letter-spacing: -0.266px;
 					}
 				}
-				.right-config {
+				.down-config {
 					width: 100%;
 					height: auto;
 					.panel-config {
@@ -93,7 +65,7 @@
 								width: 60%;
 								height: auto;
 								.title {
-									color: #000;
+									color: #003531;
 									font-family: $font;
 									font-size: 24px;
 									font-style: normal;
@@ -115,7 +87,7 @@
 								width: 91px;
 								height: 32px;
 								border-radius: 4px;
-								background: #eb6753;
+								background: #003531;
 								color: #fff;
 								font-family: $font;
 								font-size: 13px;
