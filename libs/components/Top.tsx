@@ -257,12 +257,12 @@ const Top = () => {
 										/>
 										{t('English')}
 									</MenuItem>
-									<MenuItem disableRipple onClick={langChoice} id="kr">
+									<MenuItem disableRipple onClick={langChoice} id="ar">
 										<img
 											className="img-flag"
-											src={'/img/flag/langkr.png'}
+											src={'/img/flag/langar.png'}
 											onClick={langChoice}
-											id="uz"
+											id="ar"
 											alt={'arabicFlag'}
 										/>
 										{t('Arabic')}
