@@ -105,7 +105,9 @@ const MyArticles: NextPage = ({ initialInput, ...props }: T) => {
 							/>
 						</Stack>
 						<Stack className="total">
-							<Typography>Total {totalCount ?? 0} article(s) available</Typography>
+							<Typography>
+								Total {totalCount} article{totalCount > 1 ? 's' : ''} available
+							</Typography>
 						</Stack>
 					</Stack>
 				)}

@@ -81,7 +81,6 @@ const PropertyCard = (props: PropertyCardType) => {
 							<img src="/img/icons/expand.svg" alt="" /> <Typography>{property.propertySquare} m2</Typography>
 						</Stack>
 					</Stack>
-					{/* <Stack className="divider"></Stack> */}
 					<Stack className="type-buttons">
 						<Stack className="type">
 							<Typography

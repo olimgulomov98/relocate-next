@@ -146,16 +146,16 @@ const Top = () => {
 					<div>{t('Home')}</div>
 				</Link>
 				<Link href={'/property'}>
-					<div>{t('Properties')}</div>
+					<div>{t('Hotels')}</div>
 				</Link>
 				<Link href={'/agent'}>
-					<div> {t('Agents')} </div>
+					<div> {t('Realtors')} </div>
 				</Link>
 				<Link href={'/community?articleCategory=FREE'}>
 					<div> {t('Community')} </div>
 				</Link>
 				<Link href={'/cs'}>
-					<div> {t('CS')} </div>
+					<div> {t('FAQ')} </div>
 				</Link>
 			</Stack>
 		);
@@ -174,21 +174,21 @@ const Top = () => {
 								<div>{t('Home')}</div>
 							</Link>
 							<Link href={'/property'}>
-								<div>{t('Properties')}</div>
+								<div>{t('Hotels')}</div>
 							</Link>
 							<Link href={'/agent'}>
-								<div> {t('Agents')} </div>
+								<div> {t('Realtors')} </div>
 							</Link>
 							<Link href={'/community?articleCategory=FREE'}>
 								<div> {t('Community')} </div>
 							</Link>
 							{user?._id && (
 								<Link href={'/mypage'}>
-									<div> {t('My Page')} </div>
+									<div> {t('My Profile')} </div>
 								</Link>
 							)}
 							<Link href={'/cs'}>
-								<div> {t('CS')} </div>
+								<div> {t('FAQ')} </div>
 							</Link>
 						</Box>
 						<Box component={'div'} className={'user-box'}>
@@ -263,9 +263,9 @@ const Top = () => {
 											src={'/img/flag/langkr.png'}
 											onClick={langChoice}
 											id="uz"
-											alt={'koreanFlag'}
+											alt={'arabicFlag'}
 										/>
-										{t('Korean')}
+										{t('Arabic')}
 									</MenuItem>
 									<MenuItem disableRipple onClick={langChoice} id="ru">
 										<img

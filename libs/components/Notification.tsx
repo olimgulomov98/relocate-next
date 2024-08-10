@@ -3,33 +3,34 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
-import { GET_NOTIFICATIONS } from '../../apollo/user/query';
-import { T } from '../types/common';
-import { Notification } from '../types/notification/notification';
 import { userVar } from '../../apollo/store';
-import { Badge, Box, Button, Stack } from '@mui/material';
-import { NotificationStatus } from '../enums/notification.enum';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { MARK_NOTIFICATION_AS_READ } from '../../apollo/user/mutation';
+import { Notification } from '../types/notification/notification';
+import { GET_NOTIFICATIONS_BY_USER_ID } from '../../apollo/user/query';
+import { T } from '../types/common';
+import { Badge, Stack } from '@mui/material';
+import { NotificationStatus } from '../enums/notification.enum';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { MARK_NOTIFICATION_READ } from '../../apollo/user/mutation';
+import MarkChatUnreadIcon from '@mui/icons-material/MarkChatUnread';
+
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
 
 export default function BasicPopover() {
 	const user = useReactiveVar(userVar);
 	const router = useRouter();
-	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+	const [anchorEl, setAnchorEl] = React.useState<SVGSVGElement | null>(null);
 	const [notification, setNotification] = React.useState<Notification[]>([]);
-	const handleClick = (event: React.MouseEvent<HTMLButtonElement>, notificationId: string) => {
+
+	const handleClick = (event: React.MouseEvent<SVGSVGElement>) => {
 		setAnchorEl(event.currentTarget);
-		// markNotificationsAsRead();
 	};
 
-	const [markNotificationAsRead] = useMutation(MARK_NOTIFICATION_READ, {
+	const [markNotificationAsRead] = useMutation(MARK_NOTIFICATION_AS_READ, {
 		onCompleted: () => {
-			getNotificationsRefetch(); // 성공적으로 업데이트 후 알림 다시 가져오기
+			getNotificationsRefetch();
 		},
 		onError: (error) => {
 			console.error('Error updating notifications:', error);
@@ -73,7 +74,7 @@ export default function BasicPopover() {
 		data: getNotificationsData,
 		error: getNotificationsError,
 		refetch: getNotificationsRefetch,
-	} = useQuery(GET_NOTIFICATIONS, {
+	} = useQuery(GET_NOTIFICATIONS_BY_USER_ID, {
 		fetchPolicy: 'cache-and-network',
 		variables: { userId: user._id },
 		notifyOnNetworkStatusChange: true,
@@ -94,7 +95,6 @@ export default function BasicPopover() {
 			>
 				<NotificationsOutlinedIcon style={{ cursor: 'pointer' }} onClick={handleClick} />
 			</Badge>
-
 			<Popover
 				sx={{ marginTop: 5 }}
 				style={{ height: '500px' }}
@@ -107,20 +107,69 @@ export default function BasicPopover() {
 					horizontal: 'left',
 				}}
 			>
+				<div
+					style={{
+						background: '#45a358',
+						color: 'white',
+						border: '1px solid white',
+						height: '40px',
+						width: '400px',
+						borderRadius: '15px',
+						marginLeft: '23px',
+						marginTop: 10,
+						position: 'sticky',
+					}}
+				>
+					{' '}
+					<p
+						style={{
+							alignItems: 'center',
+							justifyContent: 'center',
+							textAlign: 'center',
+							fontWeight: 500,
+							fontSize: 20,
+							marginTop: 5,
+						}}
+					>
+						You have{' '}
+						{
+							notification.filter(
+								(ele) => ele.receiverId === user._id && ele.notificationStatus === NotificationStatus.WAIT,
+							).length
+						}{' '}
+						unread notifications!
+					</p>
+				</div>
 				{notification?.map((ele: Notification) => {
 					if (ele.receiverId === user._id) {
 						return (
 							<Stack key={ele._id} sx={{ m: 3, cursor: 'pointer' }} onClick={() => handleClickRead(ele)}>
 								<div
 									style={{
-										background: ele.notificationStatus === NotificationStatus.READ ? 'white' : '#e0dfdf',
+										background: ele.notificationStatus === NotificationStatus.READ ? '#fff' : '#e0dfdf',
 										padding: '15px',
 										borderRadius: '15px',
-										border: '1px solid black',
+										border: '1px solid #005351',
 										width: '400px',
 									}}
 								>
-									<Typography>{ele.notificationTitle}</Typography>
+									<div
+										style={{
+											background: '#45a358',
+											color: 'white',
+											marginBottom: '15px',
+											padding: '5px',
+											borderRadius: '15px',
+											display: 'flex',
+											flexDirection: 'row',
+											gap: '8px',
+											textAlign: 'center',
+											alignItems: 'center',
+										}}
+									>
+										<MarkChatUnreadIcon sx={{ width: '16px' }} />
+										<Typography>{ele.notificationTitle}</Typography>
+									</div>
 									<Typography>{ele.notificationDesc}</Typography>
 									<Typography variant="body2" color="textSecondary">
 										{dayjs(ele.createdAt).fromNow()}

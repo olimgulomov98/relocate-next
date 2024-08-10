@@ -180,7 +180,7 @@ const TuiEditor = () => {
 			<Stack direction="row" justifyContent="center">
 				<Button
 					variant="contained"
-					color="primary"
+					sx={{ backgroundColor: '#005351', color: 'white' }}
 					style={{ margin: '30px', width: '250px', height: '45px' }}
 					onClick={handleRegisterButton}
 				>

@@ -29,39 +29,39 @@ const withLayoutBasic = (Component: any) => {
 
 			switch (router.pathname) {
 				case '/property':
-					title = 'Property Search';
+					title = 'All Hotels';
 					desc = 'We are glad to see you again!';
-					bgImage = '/img/banner/property.webp';
+					bgImage = '/img/banner/propertyPage.jpg';
 					break;
 				case '/agent':
-					title = 'Agents';
-					desc = 'Home / For Rent';
-					bgImage = '/img/banner/agents.jpeg';
+					title = 'Realtors';
+					desc = 'you can check all Realtors!';
+					bgImage = '/img/banner/agentsPage.jpg';
 					break;
 				case '/agent/detail':
-					title = 'Agent Page';
-					desc = 'Home / For Rent';
+					title = 'Realtor Page';
+					desc = `you can see Agent's information!`;
 					bgImage = '/img/banner/header2.svg';
 					break;
 				case '/mypage':
-					title = 'my page';
-					desc = 'Home / For Rent';
-					bgImage = '/img/banner/header1.svg';
+					title = 'My Profile';
+					desc = 'You can see your profile!';
+					bgImage = '/img/banner/myPage.jpg';
 					break;
 				case '/community':
 					title = 'Community';
-					desc = 'Home / For Rent';
+					desc = 'Any kind of Articles!';
 					bgImage = '/img/banner/header2.svg';
 					break;
 				case '/community/detail':
 					title = 'Community Detail';
-					desc = 'Home / For Rent';
+					desc = 'you can see the detail of article!';
 					bgImage = '/img/banner/header2.svg';
 					break;
 				case '/cs':
 					title = 'CS';
 					desc = 'We are glad to see you again!';
-					bgImage = '/img/banner/header2.svg';
+					bgImage = '/img/banner/csPage.jpg';
 					break;
 				case '/account/join':
 					title = 'Login/Signup';
@@ -70,9 +70,9 @@ const withLayoutBasic = (Component: any) => {
 					setAuthHeader(true);
 					break;
 				case '/member':
-					title = 'Member Page';
-					desc = 'Home / For Rent';
-					bgImage = '/img/banner/header1.svg';
+					title = 'Member Profile';
+					desc = `you can see all information!`;
+					bgImage = '/img/banner/myPage.jpg';
 					break;
 				default:
 					break;
@@ -128,7 +128,6 @@ const withLayoutBasic = (Component: any) => {
 							style={{
 								backgroundImage: `url(${memoizedValues.bgImage})`,
 								backgroundSize: 'cover',
-								boxShadow: 'inset 10px 40px 150px 40px rgb(24 22 36)',
 							}}
 						>
 							<Stack className={'container'}>

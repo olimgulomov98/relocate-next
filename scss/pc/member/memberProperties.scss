@@ -10,7 +10,7 @@
 				.right-box {
 					width: 315px;
 					.main-title {
-						color: #181a20;
+						color: #005351;
 						font-family: $font;
 						font-size: 30px;
 						font-style: normal;
@@ -31,9 +31,9 @@
 						gap: 110px;
 						padding: 18px 15px 18px 33px;
 						border-radius: 12px;
-						background: #f6f6f6;
+						background: #005351;
 						.title-text {
-							color: #181a20;
+							color: #fff;
 							font-family: $font;
 							font-size: 15px;
 							font-style: normal;
@@ -51,7 +51,7 @@
 						align-items: center;
 						margin-top: 30px;
 						padding-bottom: 30px;
-						border-bottom: 1px solid #ddd;
+						border-bottom: 1px solid #005351;
 						.image-box {
 							width: 115px;
 							height: 90px;
@@ -73,9 +73,9 @@
 							cursor: pointer;
 							.name {
 								margin-bottom: 8px;
-								color: #181a20;
+								color: #005351;
 								font-family: $font;
-								font-size: 13px;
+								font-size: 18px;
 								font-style: normal;
 								font-weight: 600;
 								line-height: normal;
@@ -90,7 +90,7 @@
 								line-height: normal;
 							}
 							.price {
-								color: #181a20;
+								color: #005351;
 								font-family: $font;
 								font-size: 15px;
 								font-style: normal;
@@ -105,7 +105,7 @@
 							justify-content: center;
 							margin-right: 77px;
 							.date {
-								color: #181a20;
+								color: #717171;
 								font-family: $font;
 								font-size: 12px;
 								font-style: normal;
@@ -141,7 +141,7 @@
 							justify-content: center;
 							margin-right: 75px;
 							.views {
-								color: #181a20;
+								color: #005351;
 								font-family: $font;
 								font-size: 12px;
 								font-style: normal;
@@ -158,10 +158,10 @@
 						margin-top: 30px;
 						.total-result {
 							p {
-								color: #181a20;
+								color: #005351;
 								text-align: center;
 								font-family: $font;
-								font-size: 14px;
+								font-size: 16px;
 								font-style: normal;
 								font-weight: 400;
 								line-height: 26px;

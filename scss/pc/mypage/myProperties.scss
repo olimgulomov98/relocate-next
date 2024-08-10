@@ -14,7 +14,7 @@
 				.right-box {
 					width: 315px;
 					.main-title {
-						color: #181a20;
+						color: #005251;
 						font-family: $font;
 						font-size: 30px;
 						font-style: normal;
@@ -24,7 +24,7 @@
 						text-transform: capitalize;
 					}
 					.sub-title {
-						color: #181a20;
+						color: #005251;
 						font-family: $font;
 						font-size: 14px;
 						font-style: normal;
@@ -44,9 +44,8 @@
 					align-items: flex-end;
 					gap: 10px;
 					border-radius: 12px 12px 0px 0px;
-					background: rgba(143, 143, 143, 0.08);
-					border-radius: 12px 12px 0px 0px;
-					border: 1px solid rgba(196, 196, 196, 0.79);
+					background: #005251;
+					// border: 1px solid #005251;
 					.tab-name {
 						width: 110px;
 						height: 32px;
@@ -54,7 +53,7 @@
 						justify-content: center;
 						align-items: center;
 						cursor: pointer;
-						color: #000;
+						color: #fff;
 						font-family: $font;
 						font-size: 16px;
 						font-style: normal;
@@ -67,9 +66,9 @@
 						display: flex;
 						justify-content: center;
 						align-items: center;
-						border-bottom: 2px solid #eb6753;
+						// border-bottom: 2px solid #eb6753;
 						cursor: pointer;
-						color: #eb6753;
+						color: #ffc003;
 						font-family: $font;
 						font-size: 16px;
 						font-style: normal;
@@ -84,7 +83,7 @@
 				min-height: 700px;
 				padding: 30px 28px;
 				border-radius: 0px 0px 12px 12px;
-				border: 1px solid rgba(196, 196, 196, 0.79);
+				border: 1px solid #005251;
 				border-top: none;
 				background: #fff;
 				box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
@@ -95,9 +94,9 @@
 					gap: 90px;
 					padding: 18px 15px 18px 33px;
 					border-radius: 12px;
-					background: #f6f6f6;
+					background: #005251;
 					.title-text {
-						color: #181a20;
+						color: #fff;
 						font-family: $font;
 						font-size: 15px;
 						font-style: normal;
@@ -114,7 +113,7 @@
 					flex-direction: row;
 					margin-top: 30px;
 					padding-bottom: 30px;
-					border-bottom: 1px solid #ddd;
+					border-bottom: 1px solid #005251;
 					.image-box {
 						width: 110px;
 						height: 90px;
@@ -134,7 +133,7 @@
 						padding: 5px 0px;
 						.name {
 							margin-bottom: 8px;
-							color: #181a20;
+							color: #005251;
 							font-family: $font;
 							font-size: 13px;
 							font-style: normal;
@@ -151,7 +150,7 @@
 							line-height: normal;
 						}
 						.price {
-							color: #181a20;
+							color: #005251;
 							font-family: $font;
 							font-size: 15px;
 							font-style: normal;
@@ -166,7 +165,7 @@
 						justify-content: center;
 						margin-right: 55px;
 						.date {
-							color: #181a20;
+							color: #005251;
 							font-family: $font;
 							font-size: 12px;
 							font-style: normal;
@@ -203,9 +202,9 @@
 						justify-content: center;
 						margin-right: 75px;
 						.views {
-							color: #181a20;
+							color: #005251;
 							font-family: $font;
-							font-size: 12px;
+							font-size: 15px;
 							font-style: normal;
 							font-weight: 400;
 							line-height: 26px;
@@ -238,10 +237,10 @@
 					margin-top: 30px;
 					.total-result {
 						p {
-							color: #181a20;
+							color: #005251;
 							text-align: center;
 							font-family: $font;
-							font-size: 14px;
+							font-size: 16px;
 							font-style: normal;
 							font-weight: 400;
 							line-height: 26px;

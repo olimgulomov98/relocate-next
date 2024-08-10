@@ -4,5 +4,5 @@ export interface NoticeInput {
 	noticeCategory: NoticeCategory;
 	noticeStatus: NoticeStatus;
 	noticeTitle: string;
-	noticeContent?: string;
+	noticeContent: string;
 }

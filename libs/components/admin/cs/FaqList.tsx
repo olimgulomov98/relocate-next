@@ -1,41 +1,17 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
-import {
-	TableCell,
-	TableHead,
-	TableBody,
-	TableRow,
-	Table,
-	TableContainer,
-	Button,
-	Menu,
-	Fade,
-	MenuItem,
-} from '@mui/material';
-import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
+import { TableCell, TableHead, TableBody, TableRow, Table, TableContainer, Button } from '@mui/material';
 import { Stack } from '@mui/material';
 import { FaqInput } from '../../../types/faq/faq.input';
 import moment from 'moment';
 
 interface Data {
 	category: string;
-	title: string;
-	writer: string;
+	question: string;
+	answer: string;
 	date: string;
 	status: string;
 	id?: string;
-}
-
-function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
-	if (b[orderBy] < a[orderBy]) {
-		return -1;
-	}
-	if (b[orderBy] > a[orderBy]) {
-		return 1;
-	}
-	return 0;
 }
 
 type Order = 'asc' | 'desc';
@@ -55,30 +31,31 @@ const headCells: readonly HeadCell[] = [
 		label: 'Number',
 	},
 	{
-		id: 'title',
+		id: 'question',
 		numeric: true,
 		disablePadding: false,
-		label: 'TITLE',
+		label: 'QUESTION',
 	},
 
-	// {
-	// 	id: 'writer',
-	// 	numeric: true,
-	// 	disablePadding: false,
-	// 	label: 'WRITER',
-	// },
+	{
+		id: 'answer',
+		numeric: true,
+		disablePadding: false,
+		label: 'ANSWER',
+	},
+
+	{
+		id: 'category',
+		numeric: true,
+		disablePadding: false,
+		label: 'CATEGORY',
+	},
 	{
 		id: 'date',
 		numeric: true,
 		disablePadding: false,
 		label: 'DATE',
 	},
-	// {
-	// 	id: 'group',
-	// 	numeric: true,
-	// 	disablePadding: false,
-	// 	label: 'Group',
-	// },
 	{
 		id: 'status',
 		numeric: false,
@@ -160,37 +137,15 @@ export const FaqArticlesPanelList = (props: FaqArticlesPanelListType) => {
 								<TableRow hover key={'member._id'} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
 									<TableCell align="left">{index + 1}</TableCell>
 									<TableCell align="left">{ele.faqQuestion}</TableCell>
+									<TableCell align="left">{ele.faqAnswer}</TableCell>
+									<TableCell align="left">{ele.faqCategory}</TableCell>
 									<TableCell align="left" className={'name'}>
 										{moment(ele.createdAt).format('YYYY MM DD')}
 									</TableCell>
-									<TableCell align="left">{ele.faqCategory}</TableCell>
 									<TableCell align="center">
 										<Button onClick={(e: any) => handleMenuIconClick(e, index)} className={'badge success'}>
 											{ele.faqStatus}
 										</Button>
-
-										<Menu
-											className={'menu-modal'}
-											MenuListProps={{
-												'aria-labelledby': 'fade-button',
-											}}
-											anchorEl={anchorEl[index]}
-											open={Boolean(anchorEl[index])}
-											onClose={handleMenuIconClose}
-											TransitionComponent={Fade}
-											sx={{ p: 1 }}
-										>
-											<MenuItem onClick={(e: any) => generateMentorTypeHandle('member._id', 'mentor', 'originate')}>
-												<Typography variant={'subtitle1'} component={'span'}>
-													MENTOR
-												</Typography>
-											</MenuItem>
-											<MenuItem onClick={(e: any) => generateMentorTypeHandle('member._id', 'user', 'remove')}>
-												<Typography variant={'subtitle1'} component={'span'}>
-													USER
-												</Typography>
-											</MenuItem>
-										</Menu>
 									</TableCell>
 								</TableRow>
 							);

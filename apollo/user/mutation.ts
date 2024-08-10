@@ -352,7 +352,7 @@ export const CREATE_MESSAGE = gql`
  *      NOTIFICATION      *
  *************************/
 
-export const MARK_NOTIFICATION_READ = gql`
+export const MARK_NOTIFICATION_AS_READ = gql`
 	mutation MarkNotificationAsRead($notificationId: String!) {
 		markNotificationAsRead(notificationId: $notificationId)
 	}

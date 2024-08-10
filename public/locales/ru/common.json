@@ -1,10 +1,10 @@
 {
 	"Home": "Главная",
-	"Properties": "Имущество",
-	"Agents": "Агенты",
+	"Hotels": "Отели",
+	"Realtors": "Риэлторы",
 	"Community": "Сообщество",
-	"My Page": "Моя страница",
-	"CS": "Обслуживание",
+	"My Profile": "Мой профиль",
+	"FAQ": "Обслуживание",
 	"Login": "Логин",
 	"Register": "регистрация",
 	"Location": "Расположение",
@@ -18,5 +18,8 @@
 	"my page": "моя страница",
 	"Community Detail": "Детали сообщества",
 	"Login/Signup": "Логин/регистрация",
-	"Member Page": "Страница участника"
+	"Member Page": "Страница участника",
+	"you can check all Realtors!": "Вы можете проверить всех риелторов!",
+	"Any kind of Articles!": "Любые статьи!",
+	"You can see your profile!": "Вы можете увидеть свой профиль!"
 }

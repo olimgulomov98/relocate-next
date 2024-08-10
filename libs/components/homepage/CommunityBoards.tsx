@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { Stack, Typography } from '@mui/material';
 import CommunityCard from './CommunityCard';
@@ -61,12 +60,6 @@ const CommunityBoards = () => {
 					</Stack>
 					<Stack className="community-main">
 						<Stack className={'community-left'}>
-							{/* <Stack className={'content-top'}>
-								<Link href={'/community?articleCategory=NEWS'}>
-									<span>News</span>
-								</Link>
-								<img src="/img/icons/arrowBig.svg" alt="" />
-							</Stack> */}
 							<Stack className={'card-wrap'}>
 								{newsArticles.map((article, index) => {
 									return <CommunityCard vertical={true} article={article} index={index} key={article?._id} />;
@@ -74,12 +67,6 @@ const CommunityBoards = () => {
 							</Stack>
 						</Stack>
 						<Stack className={'community-right'}>
-							{/* <Stack className={'content-top'}>
-								<Link href={'/community?articleCategory=FREE'}>
-									<span>Free</span>
-								</Link>
-								<img src="/img/icons/arrowBig.svg" alt="" />
-							</Stack> */}
 							<Stack className={'card-wrap vertical'}>
 								{freeArticles.map((article, index) => {
 									return <CommunityCard vertical={false} article={article} index={index} key={article?._id} />;

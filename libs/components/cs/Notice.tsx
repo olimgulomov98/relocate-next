@@ -11,10 +11,10 @@ const Notice = () => {
 
 	/** APOLLO REQUESTS **/
 	const {
-		loading: getCommentsLoading,
-		data: getCommentsData,
-		error: getCommentsError,
-		refetch: getCommentsRefetch,
+		loading: getNoticeLoading,
+		data: getNoticeData,
+		error: getNoticeError,
+		refetch: getNoticeRefetch,
 	} = useQuery(GET_NOTICE, {
 		fetchPolicy: 'cache-and-network',
 		variables: {
@@ -29,20 +29,6 @@ const Notice = () => {
 	/** LIFECYCLES **/
 	/** HANDLERS **/
 
-	const data = [
-		{
-			no: 1,
-			event: true,
-			title: 'Register to use and get discounts',
-			date: '01.03.2024',
-		},
-		{
-			no: 2,
-			title: "It's absolutely free to upload and trade properties",
-			date: '31.03.2024',
-		},
-	];
-
 	if (device === 'mobile') {
 		return <div>NOTICE MOBILE</div>;
 	} else {
@@ -53,13 +39,15 @@ const Notice = () => {
 					<Box component={'div'} className={'top'}>
 						<span>number</span>
 						<span>title</span>
+						<span>content</span>
 						<span>date</span>
 					</Box>
 					<Stack className={'bottom'}>
-						{getCommentsData?.getNotice.map((ele: Notices, index: any) => (
+						{getNoticeData?.getNotice.map((ele: Notices, index: any) => (
 							<div className={`notice-card`} key={ele._id}>
 								<span className={'notice-number'}>{index + 1}</span>
 								<span className={'notice-title'}>{ele.noticeTitle}</span>
+								<span className={'notice-content'}>{ele.noticeContent}</span>
 								<span className={'notice-date'}>{moment(ele.createdAt).format('YYYY MM DD')}</span>
 							</div>
 						))}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Box, Divider, Typography, Link, Button } from '@mui/material';
+import { Stack, Box, Divider, Typography, Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -125,10 +125,6 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 					</div>
 					<Divider sx={{ mt: '15px', mb: '7px' }} />
 					<div className={'bott'}>
-						{/* <p>
-							{property.propertyRent ? 'Rent' : ''} {property.propertyRent && property.propertyBarter && '/'}{' '}
-							{property.propertyBarter ? 'Barter' : ''}
-						</p> */}
 						<img src={agentImage} alt="" />
 						<p>{property.memberData?.memberNick}</p>
 						<div className="book-box">

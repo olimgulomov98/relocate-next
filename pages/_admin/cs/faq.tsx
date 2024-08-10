@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import withAdminLayout from '../../../libs/components/layout/LayoutAdmin';
 import { Box, Button, InputAdornment, Stack, TextField } from '@mui/material';
-import { List, ListItem } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { TabContext } from '@mui/lab';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import TablePagination from '@mui/material/TablePagination';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 import { FaqArticlesPanelList } from '../../../libs/components/admin/cs/FaqList';
@@ -36,10 +34,10 @@ const FaqArticles: NextPage = (props: any) => {
 	const [faqCreate] = useMutation(FAQ_CREATE);
 
 	const {
-		loading: getCommentsLoading,
-		data: getCommentsData,
-		error: getCommentsError,
-		refetch: getCommentsRefetch,
+		loading: getFaqLoading,
+		data: getFaqData,
+		error: getFaqError,
+		refetch: getFaqRefetch,
 	} = useQuery(GET_FAQ, {
 		fetchPolicy: 'cache-and-network',
 		variables: {
@@ -61,7 +59,7 @@ const FaqArticles: NextPage = (props: any) => {
 			await faqCreate({ variables: { input: faq } });
 			setFaq({ ...faq, faqAnswer: '', faqQuestion: '' });
 
-			getCommentsRefetch();
+			getFaqRefetch();
 		} catch (err: any) {
 			await sweetErrorHandling(err);
 		}
@@ -77,7 +75,7 @@ const FaqArticles: NextPage = (props: any) => {
 						<MenuItem value={FaqCategory.PROPERTY}>PROPERTY</MenuItem>
 						<MenuItem value={FaqCategory.PAYMENT}>PAYMENT</MenuItem>
 						<MenuItem value={FaqCategory.FOR_BUYERS}>FOR_BUYERS</MenuItem>
-						<MenuItem value={FaqCategory.FOR_AGENTS}>FOR_AGENTS</MenuItem>
+						<MenuItem value={FaqCategory.FOR_REALTORS}>FOR_REALTORS</MenuItem>
 						<MenuItem value={FaqCategory.MEMBERSHIP}>MEMBERSHIP</MenuItem>
 						<MenuItem value={FaqCategory.COMMUNITY}>COMMUNITY</MenuItem>
 						<MenuItem value={FaqCategory.OTHER}>OTHER</MenuItem>
@@ -101,8 +99,14 @@ const FaqArticles: NextPage = (props: any) => {
 						}}
 					/>
 
-					<Button className="btn_add" variant={'contained'} size={'medium'} onClick={createFaqHandler}>
-						<AddRoundedIcon sx={{ mr: '8px' }} />
+					<Button
+						className="btn_add"
+						variant={'contained'}
+						size={'medium'}
+						onClick={createFaqHandler}
+						sx={{ color: '#fff' }}
+					>
+						<AddRoundedIcon sx={{ mr: '8px', color: '#fff' }} />
 						ADD
 					</Button>
 				</Stack>
@@ -111,43 +115,8 @@ const FaqArticles: NextPage = (props: any) => {
 				<Box component={'div'} sx={{ width: '100%', typography: 'body1' }}>
 					<TabContext value={'value'}>
 						<Box component={'div'}>
-							{/* <List className={'tab-menu'}>
-								<ListItem
-									// onClick={(e) => handleTabChange(e, 'all')}
-									value="all"
-									className={'all' === 'all' ? 'li on' : 'li'}
-								>
-									All (0)
-								</ListItem>
-								<ListItem
-									// onClick={(e) => handleTabChange(e, 'active')}
-									value="active"
-									className={'all' === 'all' ? 'li on' : 'li'}
-								>
-									Active (0)
-								</ListItem>
-								<ListItem
-									// onClick={(e) => handleTabChange(e, 'blocked')}
-									value="blocked"
-									className={'all' === 'all' ? 'li on' : 'li'}
-								>
-									Blocked (0)
-								</ListItem>
-								<ListItem
-									// onClick={(e) => handleTabChange(e, 'deleted')}
-									value="deleted"
-									className={'all' === 'all' ? 'li on' : 'li'}
-								>
-									Deleted (0)
-								</ListItem>
-							</List> */}
 							<Divider />
 							<Stack className={'search-area'} sx={{ m: '24px' }}>
-								<Select sx={{ width: '160px', mr: '20px' }} value={'searchCategory'}>
-									<MenuItem value={'mb_nick'}>mb_nick</MenuItem>
-									<MenuItem value={'mb_id'}>mb_id</MenuItem>
-								</Select>
-
 								<OutlinedInput
 									value={'searchInput'}
 									// onChange={(e) => handleInput(e.target.value)}
@@ -179,16 +148,6 @@ const FaqArticles: NextPage = (props: any) => {
 							// handleMenuIconClose={handleMenuIconClose}
 							// generateMentorTypeHandle={generateMentorTypeHandle}
 						/>
-
-						{/* <TablePagination
-							rowsPerPageOptions={[20, 40, 60]}
-							component="div"
-							count={4}
-							rowsPerPage={10}
-							page={1}
-							onPageChange={() => {}}
-							onRowsPerPageChange={() => {}}
-						/> */}
 					</TabContext>
 				</Box>
 			</Box>

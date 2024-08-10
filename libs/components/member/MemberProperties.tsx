@@ -92,7 +92,9 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 									/>
 								</Stack>
 								<Stack className="total-result">
-									<Typography>{total} property available</Typography>
+									<Typography>
+										{total} propert{total > 1 ? 'ies' : 'y'} available
+									</Typography>
 								</Stack>
 							</Stack>
 						)}

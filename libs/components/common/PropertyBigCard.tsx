@@ -101,7 +101,7 @@ const PropertyBigCard = (props: PropertyBigCardProps) => {
 					<div className={'agent'}>
 						<div>
 							<img src={agentImage} alt="" />
-							<p>{property.memberData?.memberNick}</p>
+							<p style={{ textAlign: 'center' }}>{property.memberData?.memberNick}</p>
 						</div>
 						<div className={'rent'}>
 							{property?.propertyBook ? <p>Book</p> : <span>Book</span>}

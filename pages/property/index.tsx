@@ -66,7 +66,6 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 
 	useEffect(() => {
 		console.log('searchFilter: ', searchFilter);
-		// getPropertiesRefetch({ input: searchFilter }).then();
 	}, [searchFilter]);
 
 	/** HANDLERS **/
@@ -228,7 +227,7 @@ PropertyList.defaultProps = {
 			},
 			pricesRange: {
 				start: 0,
-				end: 2000000,
+				end: 10000,
 			},
 		},
 	},

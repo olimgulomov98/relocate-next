@@ -9,7 +9,7 @@
 			.main-title-box {
 				margin-bottom: 21px;
 				.main-title {
-					color: #181a20;
+					color: #005351;
 					font-family: $font;
 					font-size: 30px;
 					font-style: normal;
@@ -19,7 +19,7 @@
 					text-transform: capitalize;
 				}
 				.sub-title {
-					color: #181a20;
+					color: #005351;
 					font-family: $font;
 					font-size: 14px;
 					font-style: normal;
@@ -62,7 +62,7 @@
 				height: auto;
 				padding: 38px 33px 35px 33px;
 				border-radius: 12px;
-				border: 1px solid rgba(196, 196, 196, 0.79);
+				border: 1px solid #005351;
 				background: #fff;
 				box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
 				.description-box {
@@ -72,7 +72,7 @@
 						margin-top: 15px;
 						width: 100%;
 						.title {
-							color: #181a20;
+							color: #005351;
 							font-family: $font;
 							font-size: 14px;
 							font-style: normal;
@@ -85,7 +85,7 @@
 							outline: none;
 							border-radius: 8px;
 							padding: 0px 15px;
-							border: 1px solid #ddd;
+							border: 1px solid #005351;
 						}
 						.description-text {
 							margin-top: 15px;
@@ -94,7 +94,7 @@
 							border-radius: 8px;
 							padding: 8px 15px;
 							appearance: none;
-							border: 1px solid #ddd;
+							border: 1px solid #005351;
 							resize: none;
 							background: #fff;
 							color: #717171;
@@ -151,7 +151,7 @@
 					}
 					.property-title {
 						margin-top: 30px;
-						color: #181a20;
+						color: #005351;
 						font-family: $font;
 						font-size: 17px;
 						font-style: normal;
@@ -168,7 +168,7 @@
 							width: 100%;
 							gap: 20px;
 							.title {
-								color: #181a20;
+								color: #005351;
 								font-family: $font;
 								font-size: 14px;
 								font-style: normal;
@@ -181,13 +181,13 @@
 								outline: none;
 								border-radius: 8px;
 								padding: 0px 15px;
-								border: 1px solid #ddd;
+								border: 1px solid #005351;
 							}
 							.select-description {
 								width: 100%;
 								height: 47px;
 								border-radius: 8px;
-								border: 1px solid #ddd;
+								border: 1px solid #005351;
 								background: #fff;
 								outline: none;
 								padding-left: 15px;
@@ -221,7 +221,7 @@
 				.upload-title {
 					margin-top: 30px;
 					margin-bottom: 30px;
-					color: #181a20;
+					color: #005351;
 					font-family: $font;
 					font-size: 17px;
 					font-style: normal;
@@ -240,7 +240,7 @@
 						justify-content: center;
 						gap: 30px;
 						border-radius: 12px;
-						border: 1px dashed #eb6753;
+						border: 1px dashed #005351;
 						.text-box {
 							width: 100%;
 							height: auto;
@@ -248,7 +248,7 @@
 							justify-content: center;
 							gap: 5px;
 							.drag-title {
-								color: #181a20;
+								color: #005351;
 								font-family: $font;
 								font-size: 17px;
 								font-style: normal;
@@ -271,9 +271,9 @@
 							align-items: center;
 							gap: 10px;
 							border-radius: 12px;
-							border: 1px solid #181a20;
+							border: 1px solid #005351;
 							.browse-button-text {
-								color: #181a20;
+								color: #005351;
 								font-family: $font;
 								font-size: 15px;
 								font-style: normal;
@@ -347,7 +347,7 @@
 						align-items: center;
 						gap: 10px;
 						border-radius: 12px;
-						background: #181a20;
+						background: #005351;
 						.next-button-text {
 							color: #fff;
 							font-family: $font;

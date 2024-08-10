@@ -59,10 +59,11 @@ const Footer = () => {
 								</div>
 								<div>
 									<strong>Discover</strong>
-									<span>Seoul</span>
-									<span>Gyeongido</span>
-									<span>Busan</span>
-									<span>Jejudo</span>
+									<span>Dubai</span>
+									<span>Abu Dhabi</span>
+									<span>Ajman</span>
+									<span>Fujairah</span>
+									<span>Sharjah</span>
 								</div>
 							</Box>
 						</Stack>
@@ -130,10 +131,11 @@ const Footer = () => {
 								</div>
 								<div>
 									<strong>Discover</strong>
-									<span>Seoul</span>
-									<span>Gyeongido</span>
-									<span>Busan</span>
-									<span>Jejudo</span>
+									<span>Dubai</span>
+									<span>Abu Dhabi</span>
+									<span>Ajman</span>
+									<span>Fujairah</span>
+									<span>Sharjah</span>
 								</div>
 							</Box>
 						</Stack>

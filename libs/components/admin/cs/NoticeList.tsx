@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import {
 	TableCell,
 	TableHead,
@@ -16,7 +15,6 @@ import {
 	Checkbox,
 	Toolbar,
 } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
 import { IconButton, Tooltip } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { Stack } from '@mui/material';
@@ -30,6 +28,7 @@ type Order = 'asc' | 'desc';
 interface Data {
 	category: string;
 	title: string;
+	content: string;
 	id: string;
 	writer: string;
 	date: string;
@@ -56,30 +55,19 @@ const headCells: readonly HeadCell[] = [
 		disablePadding: false,
 		label: 'TITLE',
 	},
-	// {
-	// 	id: 'id',
-	// 	numeric: true,
-	// 	disablePadding: false,
-	// 	label: 'ID',
-	// },
-	// {
-	// 	id: 'writer',
-	// 	numeric: true,
-	// 	disablePadding: false,
-	// 	label: 'WRITER',
-	// },
+	{
+		id: 'content',
+		numeric: true,
+		disablePadding: false,
+		label: 'Content',
+	},
 	{
 		id: 'date',
 		numeric: true,
 		disablePadding: false,
 		label: 'DATE',
 	},
-	// {
-	// 	id: 'view',
-	// 	numeric: true,
-	// 	disablePadding: false,
-	// 	label: 'VIEW',
-	// },
+
 	{
 		id: 'action',
 		numeric: false,
@@ -215,6 +203,12 @@ export const NoticeList = (props: NoticeListType) => {
 									<TableCell align="left" className={'name'}>
 										<Stack direction={'row'}>
 											<TableCell align="left">{ele.noticeTitle}</TableCell>
+										</Stack>
+									</TableCell>
+
+									<TableCell align="left" className={'name'}>
+										<Stack direction={'row'}>
+											<TableCell align="left">{ele.noticeContent}</TableCell>
 										</Stack>
 									</TableCell>
 

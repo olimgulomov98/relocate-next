@@ -14,7 +14,7 @@
 				.right-box {
 					width: 315px;
 					.main-title {
-						color: #181a20;
+						color: #005351;
 						font-family: $font;
 						font-size: 30px;
 						font-style: normal;
@@ -24,7 +24,7 @@
 						text-transform: capitalize;
 					}
 					.sub-title {
-						color: #181a20;
+						color: #005351;
 						font-family: $font;
 						font-size: 14px;
 						font-style: normal;
@@ -37,75 +37,66 @@
 				width: 100%;
 				height: auto;
 				flex-wrap: wrap;
-				flex-direction: row;
+				flex-direction: column;
 				gap: 22px;
 				.card-config {
-					width: 296px;
-					height: 413px;
+					width: 100%;
+					height: 213px;
 					margin-bottom: 7px;
+					border: 1px solid #003531;
 					border-radius: 12px;
 					background: #fff;
 					box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
-					.top {
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					align-items: center;
+					.card-left {
 						position: relative;
 						width: 100%;
-						height: 240px;
+						height: 213px;
 						a {
 							height: 100%;
 						}
-						img {
-							width: 100%;
-							height: 100%;
+						.card-img {
+							width: 400px;
+							height: 180px;
 							object-fit: cover;
-							border-radius: 12px 12px 0 0;
+							border-radius: 12px;
+							margin: 18px;
 						}
 						.top-badge {
 							position: absolute;
-							top: 20px;
-							left: 16px;
-							display: flex;
+							top: 25px;
+							left: 18px;
 							width: 80px;
-							height: 30px;
+							height: 25px;
+							display: flex;
+							flex-direction: row;
 							justify-content: center;
 							align-items: center;
-							border-radius: 6px;
-							padding: 6px 20px;
-							background: #eb6753;
-							color: #fff;
-							text-align: center;
-							text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-							font-family: $font;
-							font-size: 12px;
-							font-style: normal;
-							font-weight: 600;
-							line-height: normal;
+							border-radius: 0 6px 6px 0;
+							background: #ffc700;
 							img {
+								width: 16px;
 								height: 16px;
 							}
-						}
-						.price-box {
-							position: absolute;
-							bottom: 20px;
-							left: 20px;
-							padding: 8px 15px;
-							align-items: center;
-							border-radius: 6px;
-							border: 1px solid rgba(255, 255, 255, 0.5);
-							background: #fff;
 							p {
-								color: #181a20;
+								color: #000;
+								text-align: center;
+								text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 								font-family: $font;
-								font-size: 15px;
+								font-size: 12px;
 								font-style: normal;
 								font-weight: 600;
 								line-height: normal;
 							}
 						}
 					}
-					.bottom {
+					.card-right {
 						width: 100%;
-						height: 173px;
-						padding: 20px 16px 10px 16px;
+						height: 213px;
+						padding: 30px 16px 10px 16px;
 						.name-address {
 							width: 100%;
 							height: 48px;
@@ -115,19 +106,39 @@
 								width: 100%;
 								height: 23px;
 								overflow: hidden;
+								display: flex;
+								flex-direction: row;
+								justify-content: space-between;
+								align-items: center;
 								p {
-									color: #181a20;
+									color: #003531;
 									font-family: $font;
-									font-size: 15px;
+									font-size: 22px;
 									font-style: normal;
 									font-weight: 600;
 									line-height: normal;
 									text-transform: capitalize;
 								}
+								.buttons {
+									flex-direction: row;
+									width: auto;
+									justify-content: center;
+									align-items: center;
+									margin-right: 20px;
+									svg {
+										width: 24px;
+										height: 24px;
+										cursor: pointer;
+									}
+									.view-cnt {
+										font-size: 13px;
+									}
+								}
 							}
 							.address {
 								width: 100%;
 								overflow: hidden;
+								margin-top: 5px;
 								p {
 									color: #717171;
 									font-family: $font;
@@ -169,6 +180,7 @@
 							width: 100%;
 							justify-content: space-between;
 							align-items: center;
+							margin-top: 5px;
 							.type {
 								flex-direction: row;
 								align-items: center;
@@ -186,15 +198,39 @@
 									line-height: normal;
 								}
 							}
-							.buttons {
-								flex-direction: row;
-								width: auto;
-								gap: 12px;
-								justify-content: center;
-								align-items: center;
-								padding-right: 10px;
-								svg {
-									cursor: pointer;
+						}
+						.price-wrap {
+							display: flex;
+							flex-direction: row;
+							justify-content: space-between;
+							align-items: center;
+							margin-top: 10px;
+							p {
+								color: #003531;
+								font-family: $font;
+								font-size: 18px;
+								font-style: normal;
+								font-weight: 600;
+								line-height: normal;
+								span {
+									color: #717171;
+									font-family: $font;
+									font-size: 14px;
+									font-style: normal;
+									font-weight: 400;
+									line-height: normal;
+								}
+							}
+							.book-btn {
+								padding: 8px 15px;
+								border: 1px solid #003531;
+								border-radius: 20px;
+								color: #003531;
+								margin-right: 20px;
+								cursor: pointer;
+								&:hover {
+									background: #003531;
+									color: #fff;
 								}
 							}
 						}
@@ -209,10 +245,10 @@
 				margin-top: 30px;
 				.total-result {
 					p {
-						color: #181a20;
+						color: #005351;
 						text-align: center;
 						font-family: $font;
-						font-size: 14px;
+						font-size: 16px;
 						font-style: normal;
 						font-weight: 400;
 						line-height: 26px;

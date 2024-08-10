@@ -848,7 +848,7 @@ const Filter = (props: FilterType) => {
 						<input
 							type="number"
 							placeholder="$ max"
-							value={searchFilter?.search?.pricesRange?.end ?? 0}
+							value={searchFilter?.search?.pricesRange?.end ?? 10000}
 							onChange={(e: any) => {
 								if (e.target.value >= 0) {
 									propertyPriceHandler(e.target.value, 'end');

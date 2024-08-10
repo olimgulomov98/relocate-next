@@ -5,6 +5,6 @@ export interface Notices {
 	noticeCategory: NoticeCategory;
 	noticeStatus: NoticeStatus;
 	noticeTitle: string;
-	noticeContent?: string;
+	noticeContent: string;
 	createdAt: Date;
 }

@@ -500,7 +500,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 								</Button>
 							) : (
 								<Button className="next-button" disabled={doDisabledCheck()} onClick={insertPropertyHandler}>
-									<Typography className="next-button-text">Save</Typography>
+									<Typography className="next-button-text">Create</Typography>
 								</Button>
 							)}
 						</Stack>

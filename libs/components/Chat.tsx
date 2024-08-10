@@ -110,10 +110,6 @@ const Chat = () => {
 		[messageInput],
 	);
 
-	// function onClickHandler(event: MouseEvent<HTMLButtonElement, MouseEvent>): void {
-	// 	throw new Error('Function not implemented.');
-	// }
-
 	const getKeyHandler = (e: any) => {
 		try {
 			if (e.key == 'Enter') {
