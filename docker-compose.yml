@@ -1,5 +1,3 @@
-version: '3.3'
-
 services:
   relocate-next:
     container_name: relocate-next
