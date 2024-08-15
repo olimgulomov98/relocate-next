@@ -50,7 +50,7 @@ export default function BasicPopover() {
 						router.push(`/property/detail?id=${notification.propertyId}`);
 						break;
 					case 'ARTICLE':
-						router.push(`/property/detail?id=${notification.articleId}`);
+						router.push(`/community/detail?id=${notification.articleId}`);
 						break;
 					default:
 						router.push(`/member?memberId=${notification.authorId}`);

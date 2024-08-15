@@ -195,7 +195,7 @@ export const PropertyPanelList = (props: PropertyPanelListType) => {
 											)}
 
 											{property.propertyStatus === PropertyStatus.ACTIVE && (
-												<>
+												<div>
 													<Button onClick={(e: any) => menuIconClickHandler(e, index)} className={'badge success'}>
 														{property.propertyStatus}
 													</Button>
@@ -224,7 +224,7 @@ export const PropertyPanelList = (props: PropertyPanelListType) => {
 																</MenuItem>
 															))}
 													</Menu>
-												</>
+												</div>
 											)}
 										</TableCell>
 									</TableRow>
